@@ -78,6 +78,9 @@ struct ContentView: View {
     private var screenContent: some View {
         Group {
             switch coordinator.currentStep {
+            // Welcome Back (resume from where user left off)
+            case .welcomeBack:
+                WelcomeBackScreen()
             // Part 1
             case .splash:
                 SplashScreen()

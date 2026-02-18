@@ -90,6 +90,7 @@
 		6D880118CDD3D5E65B62E00A /* CycleSexLifeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0D5718FC04B2D93F31310 /* CycleSexLifeScreen.swift */; };
 		6E0CC28D1550BE97E0E1556A /* CycleStatsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07C8D40C69F72BD81D034CF /* CycleStatsCard.swift */; };
 		701586A548513D0E1132791C /* HealthKitPermissionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71502B835F2D482F979E512D /* HealthKitPermissionScreen.swift */; };
+		A1B2C3D4E5F6A7B8C9D0E1F2 /* WelcomeBackScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5A6B7C8D9E0F1A2 /* WelcomeBackScreen.swift */; };
 		70928D0605B866D2C314DB48 /* WelcomeSplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215E1E7404AA2716B1D168D2 /* WelcomeSplashScreen.swift */; };
 		70AD249D7534BA2EB5F991A1 /* DischargeAwarenessScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13BA8F707E8D459D727B1D /* DischargeAwarenessScreen.swift */; };
 		74C7B5D98A8B5F88C21E8DC9 /* WeightGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136F683E7933BD5A19A122E1 /* WeightGraphView.swift */; };
@@ -219,6 +220,7 @@
 		1D243698047CA5E0A3AF7AFD /* BloomApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomApp.swift; sourceTree = "<group>"; };
 		1EC24550C19B1915C8C1A717 /* TopNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavBar.swift; sourceTree = "<group>"; };
 		20E37DB86B911487FE34213E /* HelpPreferencesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPreferencesScreen.swift; sourceTree = "<group>"; };
+		B1C2D3E4F5A6B7C8D9E0F1A2 /* WelcomeBackScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeBackScreen.swift; sourceTree = "<group>"; };
 		215E1E7404AA2716B1D168D2 /* WelcomeSplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeSplashScreen.swift; sourceTree = "<group>"; };
 		22BFB97FF3AB86A33B9AC226 /* BearAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearAvatarView.swift; sourceTree = "<group>"; };
 		2580E12C6B7B467732CACD19 /* PeriodDateSelectionPreviousScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodDateSelectionPreviousScreen.swift; sourceTree = "<group>"; };
@@ -623,6 +625,7 @@
 				B54891DB3A77B5E6E650A4A1 /* TrackingPermissionScreen.swift */,
 				C29E932FC9E4695C467459A5 /* ValueComparisonScreen.swift */,
 				ABAC1DA1EFAF1EF964C6F35C /* WeightInputScreen.swift */,
+				B1C2D3E4F5A6B7C8D9E0F1A2 /* WelcomeBackScreen.swift */,
 				215E1E7404AA2716B1D168D2 /* WelcomeSplashScreen.swift */,
 			);
 			path = Screens;
@@ -975,6 +978,7 @@
 				74C7B5D98A8B5F88C21E8DC9 /* WeightGraphView.swift in Sources */,
 				EAE0A969ED0F64632653F56D /* WeightInputScreen.swift in Sources */,
 				5611B6C36E5A60103E3AA4A3 /* WeightTracker.swift in Sources */,
+				A1B2C3D4E5F6A7B8C9D0E1F2 /* WelcomeBackScreen.swift in Sources */,
 				70928D0605B866D2C314DB48 /* WelcomeSplashScreen.swift in Sources */,
 				872DFACC71622F811B2A5373 /* WheelPickerInput.swift in Sources */,
 				2BDD24F0E7C8AB79C32C2197 /* YearPicker.swift in Sources */,

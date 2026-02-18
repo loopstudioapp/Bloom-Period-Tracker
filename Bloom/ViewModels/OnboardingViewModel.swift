@@ -12,9 +12,9 @@ class OnboardingViewModel: ObservableObject {
     @AppStorage("periodFeelingRaw") var periodFeelingRaw: String = ""
 
     // MARK: - Privacy Consents
-    @AppStorage("healthDataConsent") var healthDataConsent: Bool = true
-    @AppStorage("privacyPolicyConsent") var privacyPolicyConsent: Bool = true
-    @AppStorage("marketingConsent") var marketingConsent: Bool = true
+    @AppStorage("healthDataConsent") var healthDataConsent: Bool = false
+    @AppStorage("privacyPolicyConsent") var privacyPolicyConsent: Bool = false
+    @AppStorage("marketingConsent") var marketingConsent: Bool = false
 
     // MARK: - Part 1 Multi-select (JSON encoded)
     @AppStorage("selectedGoalsJSON") var selectedGoalsJSON: String = "[]"

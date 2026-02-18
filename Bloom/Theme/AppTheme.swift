@@ -4,19 +4,19 @@ struct AppTheme {
 
     // MARK: - Colors
     struct Colors {
-        // Primary palette
-        static let primaryPink = Color(hex: "#FF6B81")
-        static let primaryPinkDark = Color(hex: "#FF4B6E")
-        static let primaryGradientStart = Color(hex: "#FF6B81")
-        static let primaryGradientEnd = Color(hex: "#FF4B6E")
+        // Primary palette — dusty rose (distinct from Flo's bright coral-pink)
+        static let primaryPink = Color(hex: "#E8738A")
+        static let primaryPinkDark = Color(hex: "#D45A7A")
+        static let primaryGradientStart = Color(hex: "#E8738A")
+        static let primaryGradientEnd = Color(hex: "#D45A7A")
 
-        // Backgrounds
+        // Backgrounds — warmer peach-rose tones
         static let background = Color.white
-        static let backgroundPink = Color(hex: "#FFF5F5")
-        static let backgroundWarm = Color(hex: "#FFFAF0")
-        static let backgroundLight = Color(hex: "#F9F9F9")
-        static let optionBackground = Color(hex: "#F5F5F5")
-        static let selectedOptionBackground = Color(hex: "#FFF0F2")
+        static let backgroundPink = Color(hex: "#FDF5F3")
+        static let backgroundWarm = Color(hex: "#FFF9F2")
+        static let backgroundLight = Color(hex: "#FAFAF9")
+        static let optionBackground = Color(hex: "#F5F5F4")
+        static let selectedOptionBackground = Color(hex: "#FCEEE9")
 
         // Text
         static let textPrimary = Color(hex: "#1A1A1A")
@@ -24,37 +24,37 @@ struct AppTheme {
         static let textTertiary = Color(hex: "#BBBBBB")
         static let textWhite = Color.white
 
-        // Accents
-        static let tealAccent = Color(hex: "#2ECDA7")
-        static let blueAccent = Color(hex: "#4A90D9")
-        static let orangeAccent = Color(hex: "#FF9F43")
-        static let coralAccent = Color(hex: "#FF6B6B")
+        // Accents — sage-teal instead of bright teal
+        static let tealAccent = Color(hex: "#3AAFA9")
+        static let blueAccent = Color(hex: "#5B9BD5")
+        static let orangeAccent = Color(hex: "#F5A657")
+        static let coralAccent = Color(hex: "#E87272")
 
         // Card & UI
         static let cardBackground = Color.white
         static let divider = Color(hex: "#E8E8E8")
-        static let checkmark = Color(hex: "#FF6B81")
+        static let checkmark = Color(hex: "#E8738A")
 
-        // Feature card colors
-        static let featureBlueGray = Color(hex: "#E8EDF2")
-        static let featurePeach = Color(hex: "#FDEAE4")
-        static let featurePink = Color(hex: "#FFE4EC")
+        // Feature card colors — warmer tones
+        static let featureBlueGray = Color(hex: "#EAF0F4")
+        static let featurePeach = Color(hex: "#FDE8E0")
+        static let featurePink = Color(hex: "#F9E0E8")
         static let featureLightBlue = Color(hex: "#E4F0FF")
 
         // Cycle phases
-        static let periodPhase = Color(hex: "#FF6B81")
+        static let periodPhase = Color(hex: "#E8738A")
         static let follicularPhase = Color(hex: "#C4C4C4")
-        static let fertilePhase = Color(hex: "#2ECDA7")
+        static let fertilePhase = Color(hex: "#3AAFA9")
         static let lutealPhase = Color(hex: "#666666")
 
         // Avatar colors
-        static let avatarPink = Color(hex: "#FF8FA3")
+        static let avatarPink = Color(hex: "#EE94A6")
         static let avatarTeal = Color(hex: "#5DD5B8")
-        static let avatarCoral = Color(hex: "#FF7F7F")
+        static let avatarCoral = Color(hex: "#F08080")
         static let avatarPurple = Color(hex: "#B388FF")
 
         // Part 2 — additional colors
-        static let tealButton = Color(hex: "#2ECDA7")
+        static let tealButton = Color(hex: "#3AAFA9")
         static let periodRed = Color(hex: "#D94452")
         static let periodRedDark = Color(hex: "#8B1A2B")
         static let dischargePurple = Color(hex: "#9B72CF")
@@ -64,8 +64,8 @@ struct AppTheme {
         static let irregularYellow = Color(hex: "#FFFBE6")
         static let navyDark = Color(hex: "#2B5F7E")
         static let lightBlueIllustration = Color(hex: "#C8DBF0")
-        static let coralGradientStart = Color(hex: "#FF8A7A")
-        static let coralGradientEnd = Color(hex: "#FF6B81")
+        static let coralGradientStart = Color(hex: "#F09080")
+        static let coralGradientEnd = Color(hex: "#E8738A")
         static let skinTone = Color(hex: "#F5D0B0")
         static let selectionPurple = Color(hex: "#7B61FF")
 
@@ -82,8 +82,8 @@ struct AppTheme {
         static let articleBlue = Color(hex: "#6BA3D6")
         static let articlePurple = Color(hex: "#9B72CF")
         static let articlePeach = Color(hex: "#FFAA85")
-        static let shieldPinkLight = Color(hex: "#FFB3C6")
-        static let shieldPinkMedium = Color(hex: "#FF8FA3")
+        static let shieldPinkLight = Color(hex: "#F5B8C8")
+        static let shieldPinkMedium = Color(hex: "#EE94A6")
         static let goldRibbon = Color(hex: "#DAA520")
 
         // Part 4 — Paywall & Commitment colors
@@ -96,10 +96,10 @@ struct AppTheme {
         static let paywallSelectedBorder = Color(hex: "#7C4DFF")
         static let paywallTextMuted = Color(hex: "#B8A9D4")
         static let paywallBadgeGreen = Color(hex: "#4CAF50")
-        static let commitmentPinkLight = Color(hex: "#FFE4EC")
+        static let commitmentPinkLight = Color(hex: "#F9E0E8")
         static let confettiGold = Color(hex: "#FFD700")
         static let confettiPurple = Color(hex: "#7C4DFF")
-        static let confettiTeal = Color(hex: "#2ECDA7")
+        static let confettiTeal = Color(hex: "#3AAFA9")
         static let sadGrayBackground = Color(hex: "#F0F0F0")
         static let sadBlueGray = Color(hex: "#8E99A4")
         static let bloomGreen = Color(hex: "#4CAF50")
@@ -111,59 +111,59 @@ struct AppTheme {
         static let tabBarBg = Color.white
         static let tabBarActiveTint = Color(hex: "#1A1A2E")
         static let tabBarInactiveTint = Color(hex: "#9CA3AF")
-        static let tabBarBadgeBg = Color(hex: "#FF6B8A")
+        static let tabBarBadgeBg = Color(hex: "#E8738A")
 
         // Today Screen — Period Circle
-        static let periodCircleBg = Color(hex: "#FF6B8A")
+        static let periodCircleBg = Color(hex: "#E8738A")
         static let periodCircleText = Color.white
-        static let periodDayNumbers = Color(hex: "#FF6B8A")
+        static let periodDayNumbers = Color(hex: "#E8738A")
         static let periodDayNormal = Color(hex: "#1A1A2E")
-        static let todayBadgeBg = Color(hex: "#FF6B8A")
+        static let todayBadgeBg = Color(hex: "#E8738A")
 
         // Daily Insights Cards
-        static let insightCardBorder = Color(hex: "#FF6B8A")
+        static let insightCardBorder = Color(hex: "#E8738A")
         static let insightCardBg = Color.white
-        static let insightCardTitle = Color(hex: "#FF6B8A")
+        static let insightCardTitle = Color(hex: "#E8738A")
 
         // Daily Logging Sheet
-        static let loggingSheetBg = Color(hex: "#F8F8F8")
+        static let loggingSheetBg = Color(hex: "#F8F8F7")
         static let loggingSheetHandle = Color(hex: "#D1D5DB")
         static let searchBarBg = Color(hex: "#E5E7EB")
-        static let emojiCircleBg = Color(hex: "#FFF0F3")
-        static let selectedChipBg = Color(hex: "#FFE0E8")
-        static let selectedChipBorder = Color(hex: "#FF6B8A")
-        static let unselectedChipBg = Color(hex: "#FFF0F3")
+        static let emojiCircleBg = Color(hex: "#FDF0EE")
+        static let selectedChipBg = Color(hex: "#F9DDE3")
+        static let selectedChipBorder = Color(hex: "#E8738A")
+        static let unselectedChipBg = Color(hex: "#FDF0EE")
         static let checkmarkBadgeBg = Color(hex: "#E8D5F5")
 
         // Cycle Sections
         static let sectionCardBg = Color.white
         static let sectionDivider = Color(hex: "#F2F2F7")
-        static let dotPeriod = Color(hex: "#FF6B8A")
+        static let dotPeriod = Color(hex: "#E8738A")
         static let dotFertile = Color(hex: "#B8E6E0")
-        static let dotOvulation = Color(hex: "#3CBBB1")
+        static let dotOvulation = Color(hex: "#3AAFA9")
         static let dotNormal = Color(hex: "#E5E7EB")
         static let abnormalBadgeBg = Color(hex: "#FFA502")
         static let normalBadgeBg = Color(hex: "#34C759")
 
         // Calendar
-        static let calendarFertileText = Color(hex: "#3CBBB1")
-        static let calendarPeriodCircle = Color(hex: "#FF6B8A")
+        static let calendarFertileText = Color(hex: "#3AAFA9")
+        static let calendarPeriodCircle = Color(hex: "#E8738A")
         static let calendarTodayCircle = Color(hex: "#6B7280")
-        static let editPeriodDatesBtnBg = Color(hex: "#FF6B8A")
+        static let editPeriodDatesBtnBg = Color(hex: "#E8738A")
         static let segmentedControlBg = Color(hex: "#E5E7EB")
 
         // Day Detail
         static let dayDetailBg = Color.white
         static let dayDetailSummaryBg = Color(hex: "#F2F2F7")
-        static let addLogFAB = Color(hex: "#3CBBB1")
+        static let addLogFAB = Color(hex: "#3AAFA9")
 
         // Health Assistant
         static let assistantBubbleBg = Color(hex: "#F2F2F7")
         static let assistantBubbleText = Color(hex: "#1A1A2E")
-        static let assistantAvatarBg = Color(hex: "#FF6B8A")
+        static let assistantAvatarBg = Color(hex: "#E8738A")
         static let assistantPopupBg = Color.white
         static let assistantPopupShadow = Color.black.opacity(0.1)
-        static let progressBarThin = Color(hex: "#FF6B8A")
+        static let progressBarThin = Color(hex: "#E8738A")
 
         // Trackers
         static let waterIconColor = Color(hex: "#4FC3F7")
@@ -173,10 +173,10 @@ struct AppTheme {
 
         // Partner Tab
         static let partnerGradientStart = Color(hex: "#E8D5F5")
-        static let partnerGradientEnd = Color(hex: "#FFE0E8")
+        static let partnerGradientEnd = Color(hex: "#F9DDE3")
         static let partnerPhoneMockBg = Color(hex: "#F8F0FF")
         static let partnerYellowCard = Color(hex: "#FFF3CD")
-        static let partnerPinkCard = Color(hex: "#FFE0E8")
+        static let partnerPinkCard = Color(hex: "#F9DDE3")
         static let partnerTealCard = Color(hex: "#E0F7FA")
 
         // Settings
@@ -184,32 +184,32 @@ struct AppTheme {
         static let settingsProfileText = Color.white
         static let settingsAlertBg = Color(hex: "#E74C3C")
         static let settingsAlertText = Color.white
-        static let goalPillSelectedBg = Color(hex: "#FF6B8A")
+        static let goalPillSelectedBg = Color(hex: "#E8738A")
         static let goalPillUnselectedBg = Color(hex: "#F2F2F7")
 
         // Reminders
-        static let toggleOnTrack = Color(hex: "#3CBBB1")
+        static let toggleOnTrack = Color(hex: "#3AAFA9")
         static let toggleOffTrack = Color(hex: "#D1D5DB")
         static let sectionHeaderBg = Color(hex: "#F2F2F7")
         static let sectionHeaderText = Color(hex: "#6B7280")
-        static let addPillReminderText = Color(hex: "#FF6B8A")
+        static let addPillReminderText = Color(hex: "#E8738A")
 
         // Reports & Analytics
         static let reportCardBg = Color.white
-        static let reportBorderLeft = Color(hex: "#FF6B8A")
-        static let reportHeaderText = Color(hex: "#FF6B8A")
-        static let cycleLengthBarPeriod = Color(hex: "#FF6B8A")
+        static let reportBorderLeft = Color(hex: "#E8738A")
+        static let reportHeaderText = Color(hex: "#E8738A")
+        static let cycleLengthBarPeriod = Color(hex: "#E8738A")
         static let cycleLengthBarRest = Color(hex: "#E5E7EB")
         static let averageLine = Color(hex: "#6B7280")
-        static let sendPrintText = Color(hex: "#3CBBB1")
+        static let sendPrintText = Color(hex: "#3AAFA9")
 
         // Graphs & Analytics
         static let graphIconCycle = Color(hex: "#B8E6E0")
         static let graphIconPeriod = Color(hex: "#4FC3F7")
-        static let graphIconPatterns = Color(hex: "#3CBBB1")
+        static let graphIconPatterns = Color(hex: "#3AAFA9")
         static let graphIconGraphs = Color(hex: "#B8E6E0")
         static let weightChartDot = Color(hex: "#4FC3F7")
-        static let weightChartLine = Color(hex: "#3CBBB1")
+        static let weightChartLine = Color(hex: "#3AAFA9")
 
         // Auth
         static let authGoogleBg = Color(hex: "#F2F2F7")
@@ -217,7 +217,7 @@ struct AppTheme {
         static let flowerPeach = Color(hex: "#FFDAB9")
         static let bearAvatarBlue = Color(hex: "#4FC3F7")
 
-        // Gradients
+        // Gradients — warmer, more distinct from Flo
         static let primaryGradient = LinearGradient(
             colors: [primaryGradientStart, primaryGradientEnd],
             startPoint: .leading,
@@ -225,7 +225,7 @@ struct AppTheme {
         )
 
         static let splashGradient = LinearGradient(
-            colors: [Color(hex: "#FF8A9E"), Color(hex: "#FF5A7E")],
+            colors: [Color(hex: "#EE94A6"), Color(hex: "#D4607A")],
             startPoint: .topLeading,
             endPoint: .bottomTrailing
         )
@@ -255,19 +255,19 @@ struct AppTheme {
         )
 
         static let premiumConfirmationGradient = LinearGradient(
-            colors: [Color(hex: "#FF6B81"), Color(hex: "#FF4B6E"), Color(hex: "#E84393")],
+            colors: [Color(hex: "#E8738A"), Color(hex: "#D4607A"), Color(hex: "#C44A80")],
             startPoint: .topLeading,
             endPoint: .bottomTrailing
         )
 
         static let commitmentGradient = LinearGradient(
-            colors: [Color(hex: "#FFF5F7"), Color(hex: "#FFE4EC")],
+            colors: [Color(hex: "#FDF5F3"), Color(hex: "#F9E0E8")],
             startPoint: .top,
             endPoint: .bottom
         )
 
         static let todayHeaderGradient = LinearGradient(
-            colors: [Color(hex: "#FFE8EE"), Color(hex: "#FFF5F0")],
+            colors: [Color(hex: "#FCEAE3"), Color(hex: "#FFF6F0")],
             startPoint: .top,
             endPoint: .bottom
         )
@@ -279,7 +279,7 @@ struct AppTheme {
         )
 
         static let fertileBarGradient = LinearGradient(
-            colors: [Color(hex: "#B8E6E0"), Color(hex: "#3CBBB1")],
+            colors: [Color(hex: "#B8E6E0"), Color(hex: "#3AAFA9")],
             startPoint: .leading,
             endPoint: .trailing
         )
