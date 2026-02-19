@@ -68,6 +68,7 @@ struct TodayView: View {
                     .padding(.vertical, AppTheme.Spacing.sm)
             }
         }
+        .frame(maxWidth: .infinity)
     }
 
     // MARK: - Period Circle Section
@@ -89,6 +90,7 @@ struct TodayView: View {
             .padding(.top, -AppTheme.Spacing.md)
             .padding(.bottom, AppTheme.Spacing.xl)
         }
+        .frame(maxWidth: .infinity)
     }
 
     private var decorativeCircles: some View {
