@@ -32,7 +32,7 @@ struct FullCalendarGrid: View {
                 // Leading blank cells
                 ForEach(0..<leadingBlanks, id: \.self) { _ in
                     Color.clear
-                        .frame(height: 40)
+                        .frame(height: AppTheme.ResponsiveLayout.scaled(40))
                 }
 
                 // Day cells
@@ -87,7 +87,7 @@ private struct FullCalendarDayCell: View {
                     .font(AppTheme.Fonts.subheadline)
                     .foregroundColor(textColorForState())
             }
-            .frame(width: 36, height: 36)
+            .frame(width: AppTheme.ResponsiveLayout.scaled(36), height: AppTheme.ResponsiveLayout.scaled(36))
             .scaleEffect(animationScale)
         }
         .buttonStyle(.plain)

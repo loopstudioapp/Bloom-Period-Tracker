@@ -10,7 +10,7 @@ struct PeriodCircleView: View {
         ZStack {
             Circle()
                 .fill(AppTheme.Colors.periodCircleBg)
-                .frame(width: 280, height: 280)
+                .frame(width: AppTheme.ResponsiveLayout.periodCircleSize, height: AppTheme.ResponsiveLayout.periodCircleSize)
                 .scaleEffect(breatheScale)
                 .onAppear {
                     withAnimation(.easeInOut(duration: 3).repeatForever(autoreverses: true)) {
@@ -24,7 +24,7 @@ struct PeriodCircleView: View {
                     .foregroundColor(AppTheme.Colors.periodCircleText.opacity(0.7))
 
                 Text("Day \(periodDay)")
-                    .font(.system(size: 48, weight: .bold, design: .rounded))
+                    .font(.system(size: AppTheme.ResponsiveLayout.periodCircleFontSize, weight: .bold, design: .rounded))
                     .foregroundColor(AppTheme.Colors.periodCircleText)
 
                 Button(action: onLearnMoreTap) {

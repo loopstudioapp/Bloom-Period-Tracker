@@ -19,14 +19,14 @@ struct WelcomeSplashScreen: View {
                     ForEach(0..<6, id: \.self) { i in
                         Ellipse()
                             .fill(Color.white.opacity(0.3))
-                            .frame(width: 40, height: 70)
-                            .offset(y: -35)
+                            .frame(width: AppTheme.ResponsiveLayout.scaled(40), height: AppTheme.ResponsiveLayout.scaled(70))
+                            .offset(y: AppTheme.ResponsiveLayout.scaled(-35))
                             .rotationEffect(.degrees(Double(i) * 60))
                     }
 
                     Circle()
                         .fill(Color.white.opacity(0.5))
-                        .frame(width: 30, height: 30)
+                        .frame(width: AppTheme.ResponsiveLayout.scaled(30), height: AppTheme.ResponsiveLayout.scaled(30))
                 }
                 .scaleEffect(bloomScale)
                 .opacity(bloomOpacity)
@@ -38,7 +38,7 @@ struct WelcomeSplashScreen: View {
                         .opacity(appeared ? 1 : 0)
 
                     Text("Bloom")
-                        .font(.system(size: 48, weight: .bold, design: .rounded))
+                        .font(.system(size: AppTheme.ResponsiveLayout.scaled(48), weight: .bold, design: .rounded))
                         .foregroundColor(AppTheme.Colors.textWhite)
                         .opacity(appeared ? 1 : 0)
 

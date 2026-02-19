@@ -14,7 +14,7 @@ struct ReviewsScreen: View {
                     reviewCard(reviews[0])
                     reviewCard(reviews[1])
 
-                    // Center rating highlight
+                    // Rating highlight
                     ratingHighlight
 
                     // Last two review cards
@@ -33,6 +33,36 @@ struct ReviewsScreen: View {
             .padding(.bottom, AppTheme.Spacing.xl)
         }
         .background(AppTheme.Colors.background)
+    }
+
+    // MARK: - Rating Highlight
+
+    private var ratingHighlight: some View {
+        VStack(spacing: AppTheme.Spacing.sm) {
+            HStack(spacing: AppTheme.Spacing.xs) {
+                ForEach(0..<5, id: \.self) { _ in
+                    Image(systemName: "star.fill")
+                        .foregroundColor(AppTheme.Colors.orangeAccent)
+                        .font(AppTheme.Fonts.body)
+                }
+            }
+
+            HStack(spacing: AppTheme.Spacing.sm) {
+                Image(systemName: "leaf.fill")
+                    .foregroundColor(AppTheme.Colors.textTertiary)
+                    .font(AppTheme.Fonts.caption)
+
+                Text("5 star ratings")
+                    .font(AppTheme.Fonts.subheadline)
+                    .foregroundColor(AppTheme.Colors.textSecondary)
+
+                Image(systemName: "leaf.fill")
+                    .foregroundColor(AppTheme.Colors.textTertiary)
+                    .font(AppTheme.Fonts.caption)
+                    .scaleEffect(x: -1, y: 1)
+            }
+        }
+        .padding(.vertical, AppTheme.Spacing.lg)
     }
 
     // MARK: - Review Card with Alignment
@@ -59,39 +89,6 @@ struct ReviewsScreen: View {
         }
     }
 
-    // MARK: - Rating Highlight
-
-    private var ratingHighlight: some View {
-        VStack(spacing: AppTheme.Spacing.sm) {
-            Text("3.5M+")
-                .font(AppTheme.Fonts.title1)
-                .foregroundColor(AppTheme.Colors.primaryPink)
-
-            HStack(spacing: AppTheme.Spacing.xs) {
-                ForEach(0..<5, id: \.self) { _ in
-                    Image(systemName: "star.fill")
-                        .foregroundColor(AppTheme.Colors.orangeAccent)
-                        .font(AppTheme.Fonts.body)
-                }
-            }
-
-            HStack(spacing: AppTheme.Spacing.sm) {
-                Image(systemName: "leaf.fill")
-                    .foregroundColor(AppTheme.Colors.textTertiary)
-                    .font(AppTheme.Fonts.caption)
-
-                Text("5 star ratings")
-                    .font(AppTheme.Fonts.subheadline)
-                    .foregroundColor(AppTheme.Colors.textSecondary)
-
-                Image(systemName: "leaf.fill")
-                    .foregroundColor(AppTheme.Colors.textTertiary)
-                    .font(AppTheme.Fonts.caption)
-                    .scaleEffect(x: -1, y: 1)
-            }
-        }
-        .padding(.vertical, AppTheme.Spacing.lg)
-    }
 }
 
 #Preview {

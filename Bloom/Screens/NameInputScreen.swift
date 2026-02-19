@@ -27,7 +27,7 @@ struct NameInputScreen: View {
                 .padding(AppTheme.Spacing.md)
                 .background(AppTheme.Colors.optionBackground)
                 .clipShape(RoundedRectangle(cornerRadius: AppTheme.CornerRadius.medium))
-                .padding(.horizontal, AppTheme.Spacing.xxxl)
+                .padding(.horizontal, AppTheme.Spacing.xl)
                 .focused($isNameFieldFocused)
 
             Spacer()

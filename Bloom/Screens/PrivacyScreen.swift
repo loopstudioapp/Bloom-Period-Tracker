@@ -52,7 +52,7 @@ struct PrivacyScreen: View {
                         consentRow(
                             isOn: $viewModel.marketingConsent
                         ) {
-                            Text("I agree to allow Bloom to track my app activity. I understand that AppsFlyer, Firebase and their integrated partners may receive this data.")
+                            Text("I agree to allow Bloom to track my app activity. I understand that Bloom integrated partners may receive this data.")
                         }
                     }
                     .padding(.horizontal, AppTheme.Spacing.lg)
@@ -81,7 +81,7 @@ struct PrivacyScreen: View {
         } label: {
             HStack(alignment: .top, spacing: AppTheme.Spacing.sm) {
                 Image(systemName: isOn.wrappedValue ? "checkmark.circle.fill" : "circle")
-                    .font(.system(size: 24))
+                    .font(.system(size: AppTheme.ResponsiveLayout.scaled(24)))
                     .foregroundColor(isOn.wrappedValue ? AppTheme.Colors.primaryPink : AppTheme.Colors.textTertiary)
 
                 label()

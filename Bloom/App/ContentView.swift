@@ -36,6 +36,7 @@ struct ContentView: View {
 
                 // Screen content
                 screenContent
+                    .constrainedWidth()
             }
         }
     }
@@ -94,8 +95,6 @@ struct ContentView: View {
                 GreetingScreen()
             case .referralSource:
                 ReferralSourceScreen()
-            case .selfOrPartner:
-                SelfOrPartnerScreen()
             case .trackingPermission:
                 TrackingPermissionScreen()
             case .pregnancyStatus:
@@ -118,8 +117,6 @@ struct ContentView: View {
                 ConfirmationScreen()
             case .periodFeelings:
                 PeriodFeelingsScreen()
-            case .communityPreview:
-                CommunityPreviewScreen()
             case .cycleEducation:
                 CycleEducationScreen()
             // Part 2
@@ -186,8 +183,6 @@ struct ContentView: View {
                 DiscoverPatternsScreen()
             case .thankYouHonesty:
                 ThankYouHonestyScreen()
-            case .partnerInvite:
-                PartnerInviteScreen()
             case .heightInput:
                 HeightInputScreen()
             case .weightInput:
@@ -196,8 +191,7 @@ struct ContentView: View {
                 HealthIntegrationScreen()
             case .healthKitPermission:
                 HealthKitPermissionScreen()
-            case .personalizingPhase1, .personalizingPhase2,
-                 .personalizingPhase3, .personalizingPhase4:
+            case .personalizing:
                 PersonalizingScreen()
             // Part 4
             case .valueComparison:

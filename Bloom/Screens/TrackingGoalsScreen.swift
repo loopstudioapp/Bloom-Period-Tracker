@@ -24,11 +24,6 @@ struct TrackingGoalsScreen: View {
             .padding(.bottom, AppTheme.Spacing.xl)
         }
         .background(AppTheme.Colors.background)
-        .onAppear {
-            if viewModel.selectedGoals.isEmpty {
-                viewModel.toggleGoal(.periodComing)
-            }
-        }
     }
 
     // MARK: - Header

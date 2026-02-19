@@ -47,6 +47,12 @@ class OnboardingViewModel: ObservableObject {
     @AppStorage("skinImpactRaw") var skinImpactRaw: String = ""
     @AppStorage("energyImpactRaw") var energyImpactRaw: String = ""
 
+    // MARK: - Part 2: Period Date Ranges (ISO8601 strings)
+    @AppStorage("recentPeriodStartDate") var recentPeriodStartDateString: String = ""
+    @AppStorage("recentPeriodEndDate") var recentPeriodEndDateString: String = ""
+    @AppStorage("previousPeriodStartDate") var previousPeriodStartDateString: String = ""
+    @AppStorage("previousPeriodEndDate") var previousPeriodEndDateString: String = ""
+
     // MARK: - Part 2 Multi-select (JSON encoded)
     @AppStorage("selectedPeriodDatesJSON") var selectedPeriodDatesJSON: String = "[]"
     @AppStorage("healthConditionsJSON") var healthConditionsJSON: String = "[]"
@@ -205,6 +211,69 @@ class OnboardingViewModel: ObservableObject {
 
     func isPeriodDateSelected(_ day: Int) -> Bool {
         selectedPeriodDates.contains(day)
+    }
+
+    // MARK: - Part 2: Period Date Ranges (Date-based)
+
+    private static let dateFormatter: ISO8601DateFormatter = {
+        let f = ISO8601DateFormatter()
+        f.formatOptions = [.withFullDate]
+        return f
+    }()
+
+    var recentPeriodStartDate: Date? {
+        get { Self.dateFormatter.date(from: recentPeriodStartDateString) }
+        set {
+            recentPeriodStartDateString = newValue.map { Self.dateFormatter.string(from: $0) } ?? ""
+            objectWillChange.send()
+        }
+    }
+
+    var recentPeriodEndDate: Date? {
+        get { Self.dateFormatter.date(from: recentPeriodEndDateString) }
+        set {
+            recentPeriodEndDateString = newValue.map { Self.dateFormatter.string(from: $0) } ?? ""
+            objectWillChange.send()
+        }
+    }
+
+    var previousPeriodStartDate: Date? {
+        get { Self.dateFormatter.date(from: previousPeriodStartDateString) }
+        set {
+            previousPeriodStartDateString = newValue.map { Self.dateFormatter.string(from: $0) } ?? ""
+            objectWillChange.send()
+        }
+    }
+
+    var previousPeriodEndDate: Date? {
+        get { Self.dateFormatter.date(from: previousPeriodEndDateString) }
+        set {
+            previousPeriodEndDateString = newValue.map { Self.dateFormatter.string(from: $0) } ?? ""
+            objectWillChange.send()
+        }
+    }
+
+    /// Predicts next period start date based on user-entered period dates.
+    /// Uses cycle length between previous and recent period starts if both exist,
+    /// otherwise defaults to 28 days from the recent period start.
+    var predictedNextPeriodDate: Date? {
+        guard let recentStart = recentPeriodStartDate else { return nil }
+        let calendar = Calendar.current
+
+        if let previousStart = previousPeriodStartDate {
+            let cycleLength = calendar.dateComponents([.day], from: previousStart, to: recentStart).day ?? 28
+            let adjustedCycle = max(cycleLength, 21) // sanity floor
+            return calendar.date(byAdding: .day, value: adjustedCycle, to: recentStart)
+        } else {
+            return calendar.date(byAdding: .day, value: 28, to: recentStart)
+        }
+    }
+
+    var predictedNextPeriodDateString: String {
+        guard let date = predictedNextPeriodDate else { return "" }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM d"
+        return formatter.string(from: date)
     }
 
     // MARK: - Part 2: Birth Control
@@ -510,7 +579,7 @@ class OnboardingViewModel: ObservableObject {
 
     // MARK: - Part 4: Subscription & Commitment
     @AppStorage("selectedPlanId") var selectedPlanId: String = "yearly"
-    @AppStorage("trialEnabled") var trialEnabled: Bool = true
+    @AppStorage("trialEnabled") var trialEnabled: Bool = false
     @AppStorage("commitmentPledgeCompleted") var commitmentPledgeCompleted: Bool = false
     @AppStorage("isPremiumUser") var isPremiumUser: Bool = false
 

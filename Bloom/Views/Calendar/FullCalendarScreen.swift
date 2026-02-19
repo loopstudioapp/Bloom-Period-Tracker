@@ -32,6 +32,7 @@ struct FullCalendarScreen: View {
                     .padding(.horizontal, AppTheme.Spacing.md)
                     .padding(.top, AppTheme.Spacing.md)
                     .padding(.bottom, showDayDetail ? AppTheme.Spacing.calendarDetailPadding : AppTheme.Spacing.calendarBottomPadding)
+                    .constrainedWidth()
                 }
             }
             .background(AppTheme.Colors.background)

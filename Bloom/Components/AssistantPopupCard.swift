@@ -91,7 +91,7 @@ struct AssistantPopupCard: View {
 
     // MARK: - Sizes
 
-    private var avatarSize: CGFloat { 40 }
+    private var avatarSize: CGFloat { AppTheme.ResponsiveLayout.scaled(40) }
     private var closeButtonSize: CGFloat { AppTheme.Spacing.xxl }
 }
 

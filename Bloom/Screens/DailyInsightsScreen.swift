@@ -62,7 +62,7 @@ struct DailyInsightsScreen: View {
                 .foregroundColor(AppTheme.Colors.textPrimary)
         }
         .padding(AppTheme.Spacing.md)
-        .frame(width: 150, height: 120)
+        .frame(width: AppTheme.ResponsiveLayout.scaled(150), height: AppTheme.ResponsiveLayout.scaled(120))
         .background(AppTheme.Colors.cardBackground)
         .cornerRadius(AppTheme.CornerRadius.medium)
         .cardShadow()
@@ -81,7 +81,7 @@ struct DailyInsightsScreen: View {
                 .foregroundColor(AppTheme.Colors.textPrimary)
         }
         .padding(AppTheme.Spacing.md)
-        .frame(width: 150, height: 120)
+        .frame(width: AppTheme.ResponsiveLayout.scaled(150), height: AppTheme.ResponsiveLayout.scaled(120))
         .background(AppTheme.Colors.cardBackground)
         .cornerRadius(AppTheme.CornerRadius.medium)
         .cardShadow()
@@ -101,7 +101,7 @@ struct DailyInsightsScreen: View {
                 .lineLimit(2)
         }
         .padding(AppTheme.Spacing.md)
-        .frame(width: 150, height: 120)
+        .frame(width: AppTheme.ResponsiveLayout.scaled(150), height: AppTheme.ResponsiveLayout.scaled(120))
         .background(AppTheme.Colors.cardBackground)
         .cornerRadius(AppTheme.CornerRadius.medium)
         .cardShadow()

@@ -26,7 +26,7 @@ struct FriendAvatarRow: View {
 
     // MARK: - Sizes
 
-    private var avatarSize: CGFloat { 44 }
+    private var avatarSize: CGFloat { AppTheme.ResponsiveLayout.scaled(44) }
     private var emojiSize: CGFloat { AppTheme.Spacing.lg }
 }
 

@@ -38,6 +38,7 @@ struct DailyLoggingSheet: View {
                     .padding(.horizontal, AppTheme.Spacing.md)
                     .padding(.top, AppTheme.Spacing.md)
                     .padding(.bottom, AppTheme.Spacing.xxxl + AppTheme.Spacing.xxl)
+                    .constrainedWidth()
                 }
             }
 

@@ -47,7 +47,7 @@ struct FeatureCard: View {
         }
     }
 
-    private var cardHeight: CGFloat { 160 }
+    private var cardHeight: CGFloat { AppTheme.ResponsiveLayout.scaled(160) }
 }
 
 // MARK: - Illustration Components

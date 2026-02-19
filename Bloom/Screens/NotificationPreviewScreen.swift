@@ -62,7 +62,7 @@ struct NotificationPreviewScreen: View {
 
     private var textSection: some View {
         VStack(spacing: AppTheme.Spacing.md) {
-            Text("Your next period will start around February 22")
+            Text("Your next period will start around \(viewModel.predictedNextPeriodDateString)")
                 .font(AppTheme.Fonts.title1)
                 .foregroundColor(AppTheme.Colors.textPrimary)
                 .multilineTextAlignment(.center)

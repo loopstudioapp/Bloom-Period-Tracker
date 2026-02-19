@@ -31,7 +31,7 @@ struct BirthYearScreen: View {
                 }
             }
             .pickerStyle(.wheel)
-            .frame(height: 200)
+            .frame(height: AppTheme.ResponsiveLayout.scaled(200))
             .padding(.horizontal, AppTheme.Spacing.xxl)
 
             Spacer()

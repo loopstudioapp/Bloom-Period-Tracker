@@ -42,7 +42,7 @@ struct CalculatingPredictionsScreen: View {
         ZStack {
             Circle()
                 .fill(AppTheme.Colors.featureLightBlue)
-                .frame(width: 160, height: 160)
+                .frame(width: AppTheme.ResponsiveLayout.scaled(160), height: AppTheme.ResponsiveLayout.scaled(160))
 
             ZStack {
                 Image(systemName: "calendar")

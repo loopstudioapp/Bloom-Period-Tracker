@@ -37,7 +37,7 @@ struct InsightCard: View {
                 }
             }
             .padding(AppTheme.Spacing.md)
-            .frame(width: 140, height: 180)
+            .frame(width: AppTheme.ResponsiveLayout.insightCardWidth, height: AppTheme.ResponsiveLayout.insightCardHeight)
             .background(insight.backgroundColor)
             .clipShape(RoundedRectangle(cornerRadius: AppTheme.CornerRadius.large))
             .overlay(

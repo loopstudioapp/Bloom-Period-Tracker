@@ -24,11 +24,11 @@ struct PremiumConfirmationScreen: View {
                 ZStack {
                     Circle()
                         .fill(Color.white.opacity(0.2))
-                        .frame(width: 120, height: 120)
+                        .frame(width: AppTheme.ResponsiveLayout.scaled(120), height: AppTheme.ResponsiveLayout.scaled(120))
 
                     Circle()
                         .fill(Color.white.opacity(0.3))
-                        .frame(width: 96, height: 96)
+                        .frame(width: AppTheme.ResponsiveLayout.scaled(96), height: AppTheme.ResponsiveLayout.scaled(96))
 
                     Image(systemName: "checkmark")
                         .font(.system(size: 44, weight: .bold))

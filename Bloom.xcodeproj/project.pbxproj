@@ -128,6 +128,7 @@
 		A6BBFA42DC65BE056098A77D /* AnalysisMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3341A89A24C4873EDE865400 /* AnalysisMenuItem.swift */; };
 		A7E1849C414F4ED246E92E5D /* CalculatingPredictionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1DE09E35C7947BDCC147C8 /* CalculatingPredictionsScreen.swift */; };
 		AAF820C2AB385337E80E64A2 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2AC028601E278DC497A80F /* ChatBubble.swift */; };
+		D7E8F9A0B1C2D3E4F5A6B7C8 /* ContentWidthContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C1D2E3F4A5B6C7D8E9F0A1 /* ContentWidthContainer.swift */; };
 		AB0DCCC1740B335704AE1A0C /* CycleSexEducationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141059808E1D7CB7228F14AE /* CycleSexEducationScreen.swift */; };
 		AC275D50C25ADD106BE09B3E /* PeriodPredictionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB5249C4AD1E0E8C05C2F6 /* PeriodPredictionScreen.swift */; };
 		AC5E5A3ED01351456BA886D8 /* PleasureInvolvementScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AA86AB91166891D5FAA637 /* PleasureInvolvementScreen.swift */; };
@@ -146,6 +147,7 @@
 		BDC0A2828F3A6DDB9BC8382E /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2405C5C47EF5BD7DBCFF72 /* SignInView.swift */; };
 		BE0C9F9BF200437DC62E7B8C /* CycleReportChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B4911B43B3C444712A1C42 /* CycleReportChatView.swift */; };
 		BEFBE0EEA7252FB4091C4D16 /* BirthControlSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD27D73ECB8F597412B1017F /* BirthControlSelectionScreen.swift */; };
+		BF1671A7BA86EF8FD65368A4 /* OpenRouterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2725FB9535CA9B3A2E2292DC /* OpenRouterService.swift */; };
 		C17FC199904D1E95DDD5BB37 /* PartnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58F6E875EC9DF11252F91E7 /* PartnerView.swift */; };
 		C5977AE004DECF17D2C4B702 /* GraphsOfEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F745E312F453E5CB236AF8EB /* GraphsOfEventsView.swift */; };
 		C5AF5E1133860AF8A7317758 /* ThankYouHonestyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6DA6665185FF9B5F2167DE /* ThankYouHonestyScreen.swift */; };
@@ -163,6 +165,7 @@
 		D8009560AA21E48CFBC042E6 /* PeriodRegularityScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CD67827A8939AF6D7F91C4 /* PeriodRegularityScreen.swift */; };
 		D985977B1FAC0FABD3B87B25 /* PeriodLengthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CF8E60B3FFE6290B6477A8 /* PeriodLengthView.swift */; };
 		DB8A14F65A9CED369ABB7995 /* PersonalizingLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F11885CC3CB79F9EDA4D3A4 /* PersonalizingLoadingView.swift */; };
+		DC0BA45CCD69EA90AAC4E016 /* BloomChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE095E9947A58C97A3AB3D8A /* BloomChatView.swift */; };
 		DE1D3C487222568B84800F2B /* FullCalendarScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B01A6074DBB10B03276738 /* FullCalendarScreen.swift */; };
 		DF09CD7A014F51EA8207F91C /* HealthConditionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30BC6B2430A9400B2256F2 /* HealthConditionsScreen.swift */; };
 		E2925ABA07FAD017FC3DFC62 /* PartnerInviteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B38A8D989BC6DEAD8F8930 /* PartnerInviteCard.swift */; };
@@ -225,8 +228,10 @@
 		22BFB97FF3AB86A33B9AC226 /* BearAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearAvatarView.swift; sourceTree = "<group>"; };
 		2580E12C6B7B467732CACD19 /* PeriodDateSelectionPreviousScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodDateSelectionPreviousScreen.swift; sourceTree = "<group>"; };
 		2672685288A7D63FEDFD4C06 /* BodyAwarenessScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyAwarenessScreen.swift; sourceTree = "<group>"; };
+		2725FB9535CA9B3A2E2292DC /* OpenRouterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRouterService.swift; sourceTree = "<group>"; };
 		27CD39A58D06EF703C03113E /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		2A2AC028601E278DC497A80F /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		C0C1D2E3F4A5B6C7D8E9F0A1 /* ContentWidthContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentWidthContainer.swift; sourceTree = "<group>"; };
 		2B4BF343D278E76064903FB6 /* AnalysisMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisMenuView.swift; sourceTree = "<group>"; };
 		2B66F351C6408EBD7CF59C88 /* HealthIntegrationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthIntegrationScreen.swift; sourceTree = "<group>"; };
 		2CB0AF2EBA174F93FAAAC2F4 /* CycleRelatedSymptomsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleRelatedSymptomsScreen.swift; sourceTree = "<group>"; };
@@ -353,6 +358,7 @@
 		D525D3DC8CFC8CA69C045291 /* ReminderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderRow.swift; sourceTree = "<group>"; };
 		D6DE890E802CBE8DDED68D7C /* BloomLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomLogo.swift; sourceTree = "<group>"; };
 		DCEDABD352F7313911CB65E9 /* CycleDotStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleDotStrip.swift; sourceTree = "<group>"; };
+		DE095E9947A58C97A3AB3D8A /* BloomChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloomChatView.swift; sourceTree = "<group>"; };
 		DEFE91CC9D134D029BEADA06 /* InsightCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightCard.swift; sourceTree = "<group>"; };
 		DF138104B43DC6865B69D75E /* CyclePatternsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclePatternsScreen.swift; sourceTree = "<group>"; };
 		DF1DE09E35C7947BDCC147C8 /* CalculatingPredictionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatingPredictionsScreen.swift; sourceTree = "<group>"; };
@@ -414,6 +420,7 @@
 				D6DE890E802CBE8DDED68D7C /* BloomLogo.swift */,
 				0AD7BC44611BDBAB0FDDC595 /* CalendarMagnifyingGlassIllustration.swift */,
 				2A2AC028601E278DC497A80F /* ChatBubble.swift */,
+				C0C1D2E3F4A5B6C7D8E9F0A1 /* ContentWidthContainer.swift */,
 				53293147B08613D5BCD4A67C /* CircularProgressView.swift */,
 				305B8F5BC5607887FC0EC139 /* CommunityPostCard.swift */,
 				B88A465BB0AD6CA918534D5A /* ComparisonCard.swift */,
@@ -509,6 +516,7 @@
 		5C3F0E5F89820FE8B7C07088 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				DE095E9947A58C97A3AB3D8A /* BloomChatView.swift */,
 				503E7C9DADDFE46AC00B6285 /* BloomTabView.swift */,
 				D49210AA40AEFFEF2B8F01B0 /* InsightsView.swift */,
 				9097F72F7B2AA8BE0B3E32FF /* MessagesView.swift */,
@@ -670,6 +678,7 @@
 			children = (
 				5078BA76802551862AE0A856 /* CycleService.swift */,
 				1808E0662F4F64F2481DF70B /* HealthKitService.swift */,
+				2725FB9535CA9B3A2E2292DC /* OpenRouterService.swift */,
 				00EA49F1A6682BEF6BB0D5AD /* SymptomService.swift */,
 			);
 			path = Services;
@@ -813,6 +822,7 @@
 				BEFBE0EEA7252FB4091C4D16 /* BirthControlSelectionScreen.swift in Sources */,
 				9BE7C7AEA21EDA156C5D60FA /* BirthYearScreen.swift in Sources */,
 				906E714533AE0CD947FE2902 /* BloomApp.swift in Sources */,
+				DC0BA45CCD69EA90AAC4E016 /* BloomChatView.swift in Sources */,
 				111FFD7C5602E46205C7830B /* BloomLogo.swift in Sources */,
 				2B6DF635A5BF60784A16091A /* BloomTabView.swift in Sources */,
 				3BEEA3FF0135424C33AF413F /* BodyAwarenessScreen.swift in Sources */,
@@ -821,6 +831,7 @@
 				A685719553850E82CDD14570 /* CalendarPreviewScreen.swift in Sources */,
 				A52037C2FCB19A1EBB5769E9 /* CalendarViewModel.swift in Sources */,
 				AAF820C2AB385337E80E64A2 /* ChatBubble.swift in Sources */,
+				D7E8F9A0B1C2D3E4F5A6B7C8 /* ContentWidthContainer.swift in Sources */,
 				D45ABE9910B649D2C0968FA5 /* ChatMessage.swift in Sources */,
 				86B11F253C36C7F66C63AC22 /* ChatViewModel.swift in Sources */,
 				8166D1C1F282C55734811DFC /* CircularProgressView.swift in Sources */,
@@ -905,6 +916,7 @@
 				5E152C5BB7ECDC1B2AEC4289 /* OnboardingMultiSelect.swift in Sources */,
 				0B2A8955DFEF4B398E40FA37 /* OnboardingSingleSelect.swift in Sources */,
 				B8333BE852D278C11A0BA6FF /* OnboardingViewModel.swift in Sources */,
+				BF1671A7BA86EF8FD65368A4 /* OpenRouterService.swift in Sources */,
 				8A22C870D9D69B888C3757F5 /* OptionCard.swift in Sources */,
 				61D41750B286E09430C2D6F3 /* OptionRow.swift in Sources */,
 				4C2414D62790175265C94609 /* PartnerIllustration.swift in Sources */,

@@ -357,6 +357,61 @@ struct AppTheme {
         static let slow = SwiftUI.Animation.easeInOut(duration: 0.6)
         static let quick = SwiftUI.Animation.easeOut(duration: 0.2)
     }
+
+    // MARK: - Responsive Layout
+    struct ResponsiveLayout {
+        static let seWidth: CGFloat = 375
+        static let standardWidth: CGFloat = 390
+        static let proMaxWidth: CGFloat = 430
+        static let iPadMinWidth: CGFloat = 768
+
+        static var screenWidth: CGFloat {
+            UIScreen.main.bounds.width
+        }
+
+        static var isIPad: Bool {
+            UIDevice.current.userInterfaceIdiom == .pad
+        }
+
+        static var isSE: Bool {
+            screenWidth <= seWidth
+        }
+
+        /// Scale factor relative to standard iPhone (390pt), capped at 1.25 for iPad
+        static var scaleFactor: CGFloat {
+            let raw = screenWidth / standardWidth
+            return min(raw, 1.25)
+        }
+
+        /// Scale a base value proportionally to screen width
+        static func scaled(_ base: CGFloat) -> CGFloat {
+            base * scaleFactor
+        }
+
+        /// Max content width for iPad to prevent overly wide text/cards
+        static let maxContentWidth: CGFloat = 600
+
+        // Named component sizes
+        static var periodCircleSize: CGFloat {
+            isSE ? 240 : (isIPad ? 320 : 280)
+        }
+
+        static var periodCircleFontSize: CGFloat {
+            isSE ? 40 : (isIPad ? 56 : 48)
+        }
+
+        static var insightCardWidth: CGFloat {
+            isSE ? 125 : (isIPad ? 180 : 140)
+        }
+
+        static var insightCardHeight: CGFloat {
+            isSE ? 160 : (isIPad ? 220 : 180)
+        }
+
+        static var symptomPatternHeight: CGFloat {
+            isSE ? 340 : (isIPad ? 420 : 380)
+        }
+    }
 }
 
 // MARK: - Shadow Modifier

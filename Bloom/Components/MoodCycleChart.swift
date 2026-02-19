@@ -109,7 +109,7 @@ struct MoodCycleChart: View {
 
     // MARK: - Constants
 
-    private var chartHeight: CGFloat { 140 }
+    private var chartHeight: CGFloat { AppTheme.ResponsiveLayout.scaled(140) }
     private var phaseBarHeight: CGFloat { AppTheme.Spacing.sm }
     private var curveLineWidth: CGFloat { AppTheme.Spacing.xxs + 1 }
     private var emojiSize: CGFloat { AppTheme.Spacing.lg }

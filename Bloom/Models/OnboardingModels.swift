@@ -535,25 +535,16 @@ struct OnboardingData {
             id: "yearly",
             title: "Yearly",
             price: "$49.99/year",
-            perPeriod: "$4.17/mo",
-            savings: "Save 58%",
+            perPeriod: "$0.96/week",
+            savings: "Save 86%",
             trialText: "3-day free trial",
             isMostPopular: true
         ),
         SubscriptionPlan(
-            id: "quarterly",
-            title: "3 Months",
-            price: "$29.99/3mo",
-            perPeriod: "$10.00/mo",
-            savings: "Save 17%",
-            trialText: nil,
-            isMostPopular: false
-        ),
-        SubscriptionPlan(
-            id: "monthly",
-            title: "Monthly",
-            price: "$11.99/mo",
-            perPeriod: "$11.99/mo",
+            id: "weekly",
+            title: "Weekly",
+            price: "$6.99/week",
+            perPeriod: "$6.99/week",
             savings: nil,
             trialText: nil,
             isMostPopular: false

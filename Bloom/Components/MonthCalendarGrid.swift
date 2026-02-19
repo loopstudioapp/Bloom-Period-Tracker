@@ -157,8 +157,8 @@ struct MonthCalendarGrid: View {
     // MARK: - Sizes
 
     private var cellSize: CGFloat { AppTheme.Spacing.xxl + AppTheme.Spacing.sm }
-    private var circleSize: CGFloat { AppTheme.Spacing.xxl }
-    private var badgeSize: CGFloat { AppTheme.Spacing.xxxl + AppTheme.Spacing.md }
+    private var circleSize: CGFloat { AppTheme.ResponsiveLayout.scaled(AppTheme.Spacing.xxl) }
+    private var badgeSize: CGFloat { AppTheme.ResponsiveLayout.scaled(AppTheme.Spacing.xxxl + AppTheme.Spacing.md) }
 }
 
 #Preview {

@@ -20,7 +20,8 @@ struct PersonalizingScreen: View {
             Spacer()
 
             phaseContent
-                .frame(height: 200)
+                .frame(height: AppTheme.ResponsiveLayout.scaled(200))
+                .clipped()
 
             CircularProgressView(progress: progress)
 
@@ -75,7 +76,7 @@ struct PersonalizingScreen: View {
     // MARK: - Timer
 
     private func startProgressTimer() {
-        let totalDuration: Double = 8.0
+        let totalDuration: Double = 4.5
         let tickInterval: Double = 0.05
         let increment = tickInterval / totalDuration
 

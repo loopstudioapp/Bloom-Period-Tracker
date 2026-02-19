@@ -169,9 +169,9 @@ struct DayDetailPanel: View {
 
     private var borderWidth: CGFloat { AppTheme.Spacing.xs }
     private var closeButtonSize: CGFloat { AppTheme.Spacing.xxl }
-    private var dataIconSize: CGFloat { 40 }
-    private var dataItemWidth: CGFloat { 56 }
-    private var fabSize: CGFloat { 44 }
+    private var dataIconSize: CGFloat { AppTheme.ResponsiveLayout.scaled(40) }
+    private var dataItemWidth: CGFloat { AppTheme.ResponsiveLayout.scaled(56) }
+    private var fabSize: CGFloat { AppTheme.ResponsiveLayout.scaled(44) }
 }
 
 #Preview {

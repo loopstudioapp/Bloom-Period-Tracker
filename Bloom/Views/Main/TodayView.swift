@@ -15,6 +15,7 @@ struct TodayView: View {
                         myCyclesSection
                         symptomPatternsSection
                     }
+                    .constrainedWidth()
                 }
 
                 // Health Assistant Popup
@@ -45,10 +46,7 @@ struct TodayView: View {
             .fullScreenCover(isPresented: $viewModel.showCalendar) {
                 FullCalendarScreen()
             }
-            .fullScreenCover(isPresented: $viewModel.showSettings) {
-                SettingsView()
-            }
-            .fullScreenCover(isPresented: $viewModel.showHealthChat) {
+.fullScreenCover(isPresented: $viewModel.showHealthChat) {
                 HealthAssistantChatView()
             }
         }
@@ -63,10 +61,7 @@ struct TodayView: View {
             VStack(spacing: 0) {
                 TopNavBar(
                     month: viewModel.currentMonth,
-                    notificationCount: viewModel.notificationCount,
-                    onAvatarTap: { viewModel.showSettings = true },
-                    onCalendarTap: { viewModel.showCalendar = true },
-                    onNotificationTap: {}
+                    onCalendarTap: { viewModel.showCalendar = true }
                 )
 
                 WeekStripView(weekDays: viewModel.weekDays)
@@ -214,7 +209,7 @@ struct TodayView: View {
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .always))
-            .frame(height: 380)
+            .frame(height: AppTheme.ResponsiveLayout.symptomPatternHeight)
 
             if viewModel.symptomPatterns.count > 1 {
                 Text("1 of \(viewModel.symptomPatterns.count)")

@@ -14,7 +14,7 @@ struct AnalysisMenuItem: View {
                     ZStack {
                         Circle()
                             .fill(iconColor.opacity(0.15))
-                            .frame(width: 40, height: 40)
+                            .frame(width: AppTheme.ResponsiveLayout.scaled(40), height: AppTheme.ResponsiveLayout.scaled(40))
 
                         Image(systemName: icon)
                             .font(.system(size: 18))

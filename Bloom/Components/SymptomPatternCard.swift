@@ -79,7 +79,7 @@ struct SymptomPatternCard: View {
             ForEach(Array(pattern.cycleData.enumerated()), id: \.offset) { index, row in
                 HStack(spacing: .zero) {
                     Text(rowLabel(for: index))
-                        .font(.system(size: 9, weight: .regular, design: .rounded))
+                        .font(.system(size: AppTheme.ResponsiveLayout.scaled(9), weight: .regular, design: .rounded))
                         .foregroundColor(AppTheme.Colors.textSecondary)
                         .frame(width: rowLabelWidth, alignment: .leading)
                         .lineLimit(1)
@@ -188,9 +188,9 @@ struct SymptomPatternCard: View {
     // MARK: - Sizes
 
     private var iconCircleSize: CGFloat { AppTheme.Spacing.xxl + AppTheme.Spacing.sm }
-    private var dotSize: CGFloat { 10 }
+    private var dotSize: CGFloat { AppTheme.ResponsiveLayout.scaled(10) }
     private var legendDotSize: CGFloat { AppTheme.Spacing.sm }
-    private var rowLabelWidth: CGFloat { 72 }
+    private var rowLabelWidth: CGFloat { AppTheme.ResponsiveLayout.scaled(72) }
 }
 
 #Preview {

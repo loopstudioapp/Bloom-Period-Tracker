@@ -21,7 +21,7 @@ struct WeekStripView: View {
                                 Text("\(day.dayNumber)")
                                     .font(AppTheme.Fonts.bodyBold)
                                     .foregroundColor(AppTheme.Colors.textWhite)
-                                    .frame(width: 36, height: 36)
+                                    .frame(width: AppTheme.ResponsiveLayout.scaled(36), height: AppTheme.ResponsiveLayout.scaled(36))
                                     .background(AppTheme.Colors.todayBadgeBg)
                                     .clipShape(Circle())
                             }
@@ -29,14 +29,14 @@ struct WeekStripView: View {
                             Text("\(day.dayNumber)")
                                 .font(AppTheme.Fonts.bodyBold)
                                 .foregroundColor(AppTheme.Colors.textWhite)
-                                .frame(width: 36, height: 36)
+                                .frame(width: AppTheme.ResponsiveLayout.scaled(36), height: AppTheme.ResponsiveLayout.scaled(36))
                                 .background(AppTheme.Colors.periodDayNumbers)
                                 .clipShape(Circle())
                         } else {
                             Text("\(day.dayNumber)")
                                 .font(AppTheme.Fonts.body)
                                 .foregroundColor(AppTheme.Colors.periodDayNormal)
-                                .frame(width: 36, height: 36)
+                                .frame(width: AppTheme.ResponsiveLayout.scaled(36), height: AppTheme.ResponsiveLayout.scaled(36))
                         }
                     }
                 }

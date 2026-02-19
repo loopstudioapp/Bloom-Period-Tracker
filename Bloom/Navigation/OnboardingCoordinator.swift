@@ -11,7 +11,6 @@ enum OnboardingStep: Int, CaseIterable {
     case nameInput
     case greeting
     case referralSource
-    case selfOrPartner
     case trackingPermission
     case pregnancyStatus
     case birthYear
@@ -23,7 +22,6 @@ enum OnboardingStep: Int, CaseIterable {
     case helpPreferences
     case confirmation
     case periodFeelings
-    case communityPreview
     case cycleEducation
 
     // Part 2 (screens 21-40)
@@ -60,15 +58,11 @@ enum OnboardingStep: Int, CaseIterable {
     case pleasureInvolvement
     case discoverPatterns
     case thankYouHonesty
-    case partnerInvite
     case heightInput
     case weightInput
     case healthIntegration
     case healthKitPermission
-    case personalizingPhase1
-    case personalizingPhase2
-    case personalizingPhase3
-    case personalizingPhase4
+    case personalizing
 
     // Part 4 (screens 61-65)
     case valueComparison
@@ -94,8 +88,8 @@ enum OnboardingStep: Int, CaseIterable {
              .notificationPreview, .notificationPermission, .dischargeDiagram,
              .cyclePatterns, .symptomPrediction, .healthAssistant,
              .cycleSexEducation, .discoverPatterns, .thankYouHonesty,
-             .partnerInvite, .healthIntegration, .healthKitPermission,
-             .personalizingPhase1, .personalizingPhase2, .personalizingPhase3, .personalizingPhase4,
+             .healthIntegration, .healthKitPermission,
+             .personalizing,
              .valueComparison, .commitmentPledge, .welcomeSplash, .paywall, .premiumConfirmation:
             return false
         default:
@@ -123,8 +117,8 @@ enum OnboardingStep: Int, CaseIterable {
         switch self {
         case .welcomeBack, .splash, .credibility, .greeting, .trackingPermission, .notificationPermission,
              .thankYouHonesty, .healthKitPermission,
-             .personalizingPhase1, .personalizingPhase2, .personalizingPhase3, .personalizingPhase4,
-             .valueComparison, .commitmentPledge, .welcomeSplash, .premiumConfirmation:
+             .personalizing,
+             .valueComparison, .commitmentPledge, .welcomeSplash, .paywall, .premiumConfirmation:
             return false
         default:
             return true

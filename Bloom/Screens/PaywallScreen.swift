@@ -6,15 +6,12 @@ struct PaywallScreen: View {
     @State private var appeared = false
 
     var body: some View {
-        ZStack(alignment: .topTrailing) {
+        ZStack {
             // Background
             AppTheme.Colors.paywallBackgroundGradient.ignoresSafeArea()
 
             ScrollView(showsIndicators: false) {
                 VStack(spacing: AppTheme.Spacing.xl) {
-                    // Top spacer for close button
-                    Color.clear.frame(height: AppTheme.Spacing.xxl)
-
                     // Logo and header
                     VStack(spacing: AppTheme.Spacing.md) {
                         BloomLogo(size: .medium, color: AppTheme.Colors.textWhite)
@@ -33,6 +30,7 @@ struct PaywallScreen: View {
                             .padding(.horizontal, AppTheme.Spacing.md)
                             .opacity(appeared ? 1 : 0)
                     }
+                    .padding(.top, AppTheme.Spacing.xl)
 
                     // Feature list
                     VStack(alignment: .leading, spacing: AppTheme.Spacing.md) {
@@ -60,23 +58,6 @@ struct PaywallScreen: View {
                     }
                     .padding(.horizontal, AppTheme.Spacing.lg)
 
-                    // Trial toggle
-                    HStack {
-                        VStack(alignment: .leading, spacing: AppTheme.Spacing.xxs) {
-                            Text("Start with free trial")
-                                .font(AppTheme.Fonts.bodyBold)
-                                .foregroundColor(AppTheme.Colors.textWhite)
-                            Text("Cancel anytime during trial period")
-                                .font(AppTheme.Fonts.caption)
-                                .foregroundColor(AppTheme.Colors.paywallTextMuted)
-                        }
-                        Spacer()
-                        Toggle("", isOn: $viewModel.trialEnabled)
-                            .tint(AppTheme.Colors.paywallAccentPurple)
-                            .labelsHidden()
-                    }
-                    .padding(.horizontal, AppTheme.Spacing.lg)
-
                     // Reviews
                     VStack(alignment: .leading, spacing: AppTheme.Spacing.sm) {
                         Text("What our users say")
@@ -89,11 +70,17 @@ struct PaywallScreen: View {
 
                     // CTA Button
                     VStack(spacing: AppTheme.Spacing.sm) {
+                        if viewModel.selectedPlanId == "yearly" {
+                            Text("Cancel anytime during trial period")
+                                .font(AppTheme.Fonts.caption)
+                                .foregroundColor(AppTheme.Colors.paywallTextMuted)
+                        }
+
                         Button(action: {
                             viewModel.activatePremium()
                             coordinator.advance()
                         }) {
-                            Text(viewModel.trialEnabled ? "Start Free Trial" : "Subscribe Now")
+                            Text("Continue")
                                 .font(AppTheme.Fonts.bodyBold)
                                 .foregroundColor(AppTheme.Colors.textWhite)
                                 .frame(maxWidth: .infinity)
@@ -124,20 +111,6 @@ struct PaywallScreen: View {
                     .padding(.bottom, AppTheme.Spacing.xxl)
                 }
             }
-
-            // Close button
-            Button(action: {
-                coordinator.advance()
-            }) {
-                Image(systemName: "xmark")
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(AppTheme.Colors.paywallTextMuted)
-                    .frame(width: 36, height: 36)
-                    .background(AppTheme.Colors.paywallCardBackground)
-                    .clipShape(Circle())
-            }
-            .padding(.top, AppTheme.Spacing.md)
-            .padding(.trailing, AppTheme.Spacing.lg)
         }
         .onAppear {
             withAnimation(AppTheme.Animation.slow) {

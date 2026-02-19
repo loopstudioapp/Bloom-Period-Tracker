@@ -2,8 +2,6 @@ import SwiftUI
 
 struct SettingsView: View {
     @StateObject private var viewModel = SettingsViewModel()
-    @Environment(\.dismiss) private var dismiss
-
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -37,22 +35,11 @@ struct SettingsView: View {
                 .padding(.horizontal, AppTheme.Spacing.md)
                 .padding(.top, AppTheme.Spacing.sm)
                 .padding(.bottom, AppTheme.Spacing.xxl)
+                .constrainedWidth()
             }
             .background(AppTheme.Colors.backgroundLight)
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .font(.system(size: 16, weight: .medium))
-                            .foregroundColor(AppTheme.Colors.textPrimary)
-                    }
-                    .accessibilityLabel("Close settings")
-                }
-            }
             .navigationDestination(isPresented: $viewModel.showReminders) {
                 RemindersView()
             }

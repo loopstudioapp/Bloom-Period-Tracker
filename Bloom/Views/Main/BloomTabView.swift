@@ -18,24 +18,17 @@ struct BloomTabView: View {
                 .tag(BloomTab.insights)
                 .badge("")
 
-            SecretChatsView()
-                .tabItem {
-                    Label(BloomTab.secretChats.title, systemImage: BloomTab.secretChats.icon)
-                }
-                .tag(BloomTab.secretChats)
-                .badge("")
-
-            MessagesView()
+            BloomChatView()
                 .tabItem {
                     Label(BloomTab.messages.title, systemImage: BloomTab.messages.icon)
                 }
                 .tag(BloomTab.messages)
 
-            PartnerView()
+            SettingsView()
                 .tabItem {
-                    Label(BloomTab.partner.title, systemImage: BloomTab.partner.icon)
+                    Label(BloomTab.settings.title, systemImage: BloomTab.settings.icon)
                 }
-                .tag(BloomTab.partner)
+                .tag(BloomTab.settings)
         }
         .tint(AppTheme.Colors.tabBarActiveTint)
         .onAppear {
@@ -51,15 +44,14 @@ struct BloomTabView: View {
 }
 
 enum BloomTab: Int, CaseIterable {
-    case today, insights, secretChats, messages, partner
+    case today, insights, messages, settings
 
     var title: String {
         switch self {
         case .today: return "Today"
         case .insights: return "Insights"
-        case .secretChats: return "Secret Chats"
-        case .messages: return "Messages"
-        case .partner: return "Partner"
+        case .messages: return "Bloom AI"
+        case .settings: return "Settings"
         }
     }
 
@@ -67,9 +59,8 @@ enum BloomTab: Int, CaseIterable {
         switch self {
         case .today: return "calendar"
         case .insights: return "square.grid.2x2"
-        case .secretChats: return "binoculars"
         case .messages: return "bubble.left"
-        case .partner: return "person.2"
+        case .settings: return "gearshape"
         }
     }
 }

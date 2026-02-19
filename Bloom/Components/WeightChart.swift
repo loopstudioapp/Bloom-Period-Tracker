@@ -15,10 +15,10 @@ struct WeightChart: View {
 
     @State private var appeared = false
 
-    private let dotSize: CGFloat = 8
-    private let chartHeight: CGFloat = 200
-    private let phaseBarHeight: CGFloat = 24
-    private let yAxisWidth: CGFloat = 44
+    private var dotSize: CGFloat { AppTheme.ResponsiveLayout.scaled(8) }
+    private var chartHeight: CGFloat { AppTheme.ResponsiveLayout.scaled(200) }
+    private var phaseBarHeight: CGFloat { AppTheme.ResponsiveLayout.scaled(24) }
+    private var yAxisWidth: CGFloat { AppTheme.ResponsiveLayout.scaled(44) }
 
     private var weightRange: (min: Double, max: Double) {
         guard !dataPoints.isEmpty else { return (120, 140) }

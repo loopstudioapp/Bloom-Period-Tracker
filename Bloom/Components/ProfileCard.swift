@@ -77,7 +77,7 @@ struct ProfileCard: View {
 
     // MARK: - Sizes
 
-    private var avatarSize: CGFloat { 56 }
+    private var avatarSize: CGFloat { AppTheme.ResponsiveLayout.scaled(56) }
     private var editBadgeSize: CGFloat { AppTheme.Spacing.lg }
     private var badgeBorderWidth: CGFloat { AppTheme.Spacing.xs }
 }

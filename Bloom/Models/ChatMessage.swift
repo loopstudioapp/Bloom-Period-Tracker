@@ -1,12 +1,13 @@
 import SwiftUI
 
 struct ChatMessage: Identifiable {
-    let id = UUID()
+    let id: UUID
     let text: String
     let isFromUser: Bool
     let timestamp: Date
 
-    init(text: String, isFromUser: Bool = false, timestamp: Date = Date()) {
+    init(id: UUID = UUID(), text: String, isFromUser: Bool = false, timestamp: Date = Date()) {
+        self.id = id
         self.text = text
         self.isFromUser = isFromUser
         self.timestamp = timestamp
