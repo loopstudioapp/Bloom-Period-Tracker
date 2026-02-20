@@ -2,53 +2,62 @@ import SwiftUI
 
 struct PeriodCircleView: View {
     let periodDay: Int
+    var fertileDaysAway: Int = 6
     var onLearnMoreTap: () -> Void = {}
     var onEditDatesTap: () -> Void = {}
-    @State private var breatheScale: CGFloat = 1.0
+    var onTemperatureTap: () -> Void = {}
 
     var body: some View {
-        ZStack {
-            Circle()
-                .fill(AppTheme.Colors.periodCircleBg)
-                .frame(width: AppTheme.ResponsiveLayout.periodCircleSize, height: AppTheme.ResponsiveLayout.periodCircleSize)
-                .scaleEffect(breatheScale)
-                .onAppear {
-                    withAnimation(.easeInOut(duration: 3).repeatForever(autoreverses: true)) {
-                        breatheScale = 1.01
-                    }
+        VStack(spacing: AppTheme.Spacing.md) {
+            // Fertility countdown
+            Text("Best chances of conceiving are in")
+                .font(AppTheme.Fonts.body)
+                .foregroundColor(AppTheme.Colors.heroSubtitleText)
+
+            Text("\(fertileDaysAway) days")
+                .font(.system(size: 44, weight: .bold, design: .rounded))
+                .foregroundColor(AppTheme.Colors.heroDaysText)
+
+            // Temperature readings button
+            Button(action: onTemperatureTap) {
+                HStack(spacing: AppTheme.Spacing.sm) {
+                    Image(systemName: "thermometer.medium")
+                        .font(.system(size: 16))
+                        .foregroundColor(AppTheme.Colors.heroSubtitleText)
+                    Text("Get body temperature readings")
+                        .font(AppTheme.Fonts.subheadline)
+                        .foregroundColor(AppTheme.Colors.heroSubtitleText)
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundColor(AppTheme.Colors.heroSubtitleText)
                 }
-
-            VStack(spacing: AppTheme.Spacing.sm) {
-                Text("Period:")
-                    .font(AppTheme.Fonts.body)
-                    .foregroundColor(AppTheme.Colors.periodCircleText.opacity(0.7))
-
-                Text("Day \(periodDay)")
-                    .font(.system(size: AppTheme.ResponsiveLayout.periodCircleFontSize, weight: .bold, design: .rounded))
-                    .foregroundColor(AppTheme.Colors.periodCircleText)
-
-                Button(action: onLearnMoreTap) {
-                    HStack(spacing: AppTheme.Spacing.xs) {
-                        Text("What's important today? Learn more")
-                            .font(AppTheme.Fonts.subheadline)
-                            .foregroundColor(AppTheme.Colors.periodCircleText.opacity(0.7))
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 12))
-                            .foregroundColor(AppTheme.Colors.periodCircleText.opacity(0.7))
-                    }
-                }
-
-                Button(action: onEditDatesTap) {
-                    Text("Edit period dates")
-                        .font(AppTheme.Fonts.subheadlineBold)
-                        .foregroundColor(AppTheme.Colors.periodCircleBg)
-                        .padding(.horizontal, AppTheme.Spacing.lg)
-                        .padding(.vertical, AppTheme.Spacing.sm)
-                        .background(AppTheme.Colors.textWhite)
-                        .clipShape(Capsule())
-                }
-                .padding(.top, AppTheme.Spacing.xs)
             }
+
+            // Period day info
+            HStack(spacing: AppTheme.Spacing.xs) {
+                Text("Period: Day \(periodDay)")
+                    .font(AppTheme.Fonts.body)
+                    .foregroundColor(AppTheme.Colors.heroSubtitleText.opacity(0.8))
+                Button(action: onLearnMoreTap) {
+                    Image(systemName: "info.circle")
+                        .font(.system(size: 14))
+                        .foregroundColor(AppTheme.Colors.heroSubtitleText.opacity(0.6))
+                }
+            }
+            .padding(.top, AppTheme.Spacing.xs)
+
+            // Edit period dates button
+            Button(action: onEditDatesTap) {
+                Text("Edit period dates")
+                    .font(AppTheme.Fonts.subheadlineBold)
+                    .foregroundColor(AppTheme.Colors.primaryPink)
+                    .padding(.horizontal, AppTheme.Spacing.xl)
+                    .padding(.vertical, AppTheme.Spacing.sm + 2)
+                    .background(Color.white)
+                    .clipShape(Capsule())
+            }
+            .padding(.top, AppTheme.Spacing.xs)
         }
+        .padding(.vertical, AppTheme.Spacing.xl)
     }
 }

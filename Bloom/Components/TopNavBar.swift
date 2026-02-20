@@ -6,21 +6,33 @@ struct TopNavBar: View {
 
     var body: some View {
         HStack(spacing: AppTheme.Spacing.md) {
-            Spacer()
-
-            HStack(spacing: AppTheme.Spacing.sm) {
-                Text(month)
-                    .font(AppTheme.Fonts.headline)
-                    .foregroundColor(AppTheme.Colors.textPrimary)
-
-                Button(action: onCalendarTap) {
-                    Image(systemName: "calendar")
-                        .font(.system(size: 18))
-                        .foregroundColor(AppTheme.Colors.textPrimary)
-                }
+            // App logo
+            ZStack {
+                Circle()
+                    .fill(AppTheme.Colors.tealAccent)
+                    .frame(width: 36, height: 36)
+                Text("🐻")
+                    .font(.system(size: 18))
+                    .offset(y: -1)
+                Circle()
+                    .fill(AppTheme.Colors.primaryPink)
+                    .frame(width: 10, height: 10)
+                    .offset(x: 12, y: -12)
             }
 
             Spacer()
+
+            Text(month)
+                .font(AppTheme.Fonts.headline)
+                .foregroundColor(AppTheme.Colors.textPrimary)
+
+            Spacer()
+
+            Button(action: onCalendarTap) {
+                Image(systemName: "calendar")
+                    .font(.system(size: 20, weight: .medium))
+                    .foregroundColor(AppTheme.Colors.textPrimary)
+            }
         }
         .padding(.horizontal, AppTheme.Spacing.lg)
         .padding(.vertical, AppTheme.Spacing.sm)

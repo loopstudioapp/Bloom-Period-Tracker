@@ -1,10 +1,16 @@
 import SwiftUI
 
+struct SelfCareItem: Identifiable {
+    let id = UUID()
+    let icon: String
+    let title: String
+}
+
 @MainActor
 class TodayViewModel: ObservableObject {
     @Published var currentCycleDay: Int = 4
-    @Published var periodDay: Int = 4
-    @Published var currentMonth: String = "January"
+    @Published var periodDay: Int = 3
+    @Published var fertileDaysAway: Int = 6
     @Published var dailyInsights: [DailyInsight] = MainInsightData.todayInsights
     @Published var isUpdatingPredictions: Bool = false
     @Published var showHealthAssistantPopup: Bool = true
@@ -14,6 +20,12 @@ class TodayViewModel: ObservableObject {
     @Published var showCalendar: Bool = false
     @Published var showSettings: Bool = false
     @Published var showHealthChat: Bool = false
+
+    var currentMonth: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM d"
+        return formatter.string(from: Date())
+    }
 
     var periodText: String { "Day \(periodDay)" }
 
@@ -47,16 +59,26 @@ class TodayViewModel: ObservableObject {
             let letters = ["M", "T", "W", "T", "F", "S", "S"]
             let periodStartDay = cal.component(.day, from: currentCycle.startDate)
             let isPeriod = day >= periodStartDay && day < periodStartDay + 4
+            let isToday = cal.isDateInToday(date)
+            // Mark the day after the period ends as predicted
+            let predictedDay = periodStartDay + 4
+            let isFertile = !isPeriod && !isToday && day == predictedDay
             return WeekDay(
                 date: date,
                 dayNumber: day,
                 dayLetter: letters[offset],
                 isPeriod: isPeriod,
-                isToday: cal.isDateInToday(date),
-                isFertile: false
+                isToday: isToday,
+                isFertile: isFertile
             )
         }
     }
+
+    let selfCareItems: [SelfCareItem] = [
+        SelfCareItem(icon: "heart.text.clipboard", title: "Sex for\nperiod relief"),
+        SelfCareItem(icon: "figure.mind.and.body", title: "How to get\npregnant"),
+        SelfCareItem(icon: "hand.raised.fingers.spread", title: "Trying, but no\npregnancy")
+    ]
 
     let cycleSummaryMetrics: [CycleMetric] = [
         CycleMetric(label: "Previous cycle length", value: "30 days", status: .abnormal, statusLabel: "ABNORMAL"),

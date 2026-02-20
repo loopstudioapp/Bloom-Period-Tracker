@@ -7,33 +7,37 @@ struct InsightCard: View {
     var body: some View {
         Button(action: onTap) {
             VStack(alignment: .leading, spacing: AppTheme.Spacing.sm) {
-                if insight.type == .symptomInfo {
-                    Text(insight.title)
-                        .font(AppTheme.Fonts.captionBold)
-                        .foregroundColor(AppTheme.Colors.insightCardTitle)
-                        .textCase(.uppercase)
-                }
+                // Title at top
+                Text(insight.title)
+                    .font(AppTheme.Fonts.subheadlineBold)
+                    .foregroundColor(
+                        insight.type == .logSymptoms
+                            ? AppTheme.Colors.textPrimary
+                            : (insight.type == .symptomInfo ? AppTheme.Colors.insightCardTitle : AppTheme.Colors.textPrimary)
+                    )
+                    .lineLimit(3)
+                    .multilineTextAlignment(.leading)
 
+                Spacer()
+
+                // Icon or CTA at bottom
                 if let iconName = insight.iconName {
-                    Spacer()
-                    Image(systemName: iconName)
-                        .font(.system(size: 32))
-                        .foregroundColor(insight.type == .logSymptoms ? AppTheme.Colors.addLogFAB : AppTheme.Colors.primaryPink)
-                    Spacer()
+                    HStack {
+                        Spacer()
+                        Image(systemName: iconName)
+                            .font(.system(size: 36))
+                            .foregroundColor(
+                                insight.type == .logSymptoms
+                                    ? AppTheme.Colors.addLogFAB
+                                    : AppTheme.Colors.primaryPink.opacity(0.7)
+                            )
+                    }
                 }
 
-                if insight.type != .symptomInfo {
-                    Text(insight.title)
+                if let ctaText = insight.ctaText {
+                    Text(ctaText)
                         .font(AppTheme.Fonts.subheadlineBold)
-                        .foregroundColor(AppTheme.Colors.textPrimary)
-                        .lineLimit(3)
-                }
-
-                if let subtitle = insight.subtitle {
-                    Text(subtitle)
-                        .font(AppTheme.Fonts.caption)
-                        .foregroundColor(AppTheme.Colors.textSecondary)
-                        .lineLimit(2)
+                        .foregroundColor(AppTheme.Colors.primaryPink)
                 }
             }
             .padding(AppTheme.Spacing.md)

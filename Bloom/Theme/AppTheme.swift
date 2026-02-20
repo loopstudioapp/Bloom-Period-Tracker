@@ -113,12 +113,24 @@ struct AppTheme {
         static let tabBarInactiveTint = Color(hex: "#9CA3AF")
         static let tabBarBadgeBg = Color(hex: "#E8738A")
 
-        // Today Screen — Period Circle
+        // Today Screen — Period Circle & Hero
         static let periodCircleBg = Color(hex: "#E8738A")
         static let periodCircleText = Color.white
         static let periodDayNumbers = Color(hex: "#E8738A")
         static let periodDayNormal = Color(hex: "#1A1A2E")
         static let todayBadgeBg = Color(hex: "#E8738A")
+        static let predictedDayDash = Color(hex: "#E8738A")
+        static let heroSubtitleText = Color(hex: "#3D3D3D")
+        static let heroDaysText = Color(hex: "#1A1A1A")
+
+        // Self-care section
+        static let selfCareBg = Color(hex: "#FDF5F3")
+        static let selfCareDivider = Color(hex: "#F0D5CC")
+
+        // Insight card colors
+        static let insightPurpleBg = Color(hex: "#D8CCF0")
+        static let insightCoralBg = Color(hex: "#F5C4C0")
+        static let insightLavenderBg = Color(hex: "#C8B8E8")
 
         // Daily Insights Cards
         static let insightCardBorder = Color(hex: "#E8738A")
@@ -272,6 +284,12 @@ struct AppTheme {
             endPoint: .bottom
         )
 
+        static let todayHeroGradient = LinearGradient(
+            colors: [Color(hex: "#FCEAE3"), Color(hex: "#F8D4CE"), Color(hex: "#EDA8A8")],
+            startPoint: .top,
+            endPoint: .bottom
+        )
+
         static let partnerCardGradient = LinearGradient(
             colors: [partnerGradientStart, partnerGradientEnd],
             startPoint: .topLeading,
@@ -401,11 +419,11 @@ struct AppTheme {
         }
 
         static var insightCardWidth: CGFloat {
-            isSE ? 125 : (isIPad ? 180 : 140)
+            isSE ? 145 : (isIPad ? 200 : 165)
         }
 
         static var insightCardHeight: CGFloat {
-            isSE ? 160 : (isIPad ? 220 : 180)
+            isSE ? 190 : (isIPad ? 250 : 210)
         }
 
         static var symptomPatternHeight: CGFloat {

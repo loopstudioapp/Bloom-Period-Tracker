@@ -1,5 +1,21 @@
 import SwiftUI
 
+// MARK: - Curved Bottom Shape
+struct CurvedBottomShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: .zero)
+        path.addLine(to: CGPoint(x: rect.maxX, y: 0))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - 60))
+        path.addQuadCurve(
+            to: CGPoint(x: 0, y: rect.maxY - 60),
+            control: CGPoint(x: rect.midX, y: rect.maxY + 30)
+        )
+        path.closeSubpath()
+        return path
+    }
+}
+
 struct TodayView: View {
     @StateObject private var viewModel = TodayViewModel()
 
@@ -8,10 +24,9 @@ struct TodayView: View {
             ZStack(alignment: .bottom) {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 0) {
-                        headerSection
-                        periodCircleSection
+                        heroSection
                         dailyInsightsSection
-                        duringPeriodSection
+                        selfCareSection
                         myCyclesSection
                         symptomPatternsSection
                     }
@@ -46,16 +61,18 @@ struct TodayView: View {
             .fullScreenCover(isPresented: $viewModel.showCalendar) {
                 FullCalendarScreen()
             }
-.fullScreenCover(isPresented: $viewModel.showHealthChat) {
+            .fullScreenCover(isPresented: $viewModel.showHealthChat) {
                 HealthAssistantChatView()
             }
         }
     }
 
-    // MARK: - Header Section
-    private var headerSection: some View {
-        ZStack {
-            AppTheme.Colors.todayHeaderGradient
+    // MARK: - Hero Section (Header + Week Strip + Fertility Info)
+    private var heroSection: some View {
+        ZStack(alignment: .top) {
+            // Curved gradient background
+            AppTheme.Colors.todayHeroGradient
+                .clipShape(CurvedBottomShape())
                 .ignoresSafeArea(edges: .top)
 
             VStack(spacing: 0) {
@@ -66,50 +83,19 @@ struct TodayView: View {
 
                 WeekStripView(weekDays: viewModel.weekDays)
                     .padding(.vertical, AppTheme.Spacing.sm)
+
+                PeriodCircleView(
+                    periodDay: viewModel.periodDay,
+                    fertileDaysAway: viewModel.fertileDaysAway,
+                    onLearnMoreTap: {},
+                    onEditDatesTap: { viewModel.showCalendar = true },
+                    onTemperatureTap: {}
+                )
+                .padding(.top, AppTheme.Spacing.sm)
+                .padding(.bottom, AppTheme.Spacing.xxl)
             }
         }
         .frame(maxWidth: .infinity)
-    }
-
-    // MARK: - Period Circle Section
-    private var periodCircleSection: some View {
-        ZStack {
-            // Background gradient
-            AppTheme.Colors.todayHeaderGradient
-                .frame(height: 200)
-                .offset(y: -60)
-
-            // Decorative circles
-            decorativeCircles
-
-            PeriodCircleView(
-                periodDay: viewModel.periodDay,
-                onLearnMoreTap: {},
-                onEditDatesTap: { viewModel.showCalendar = true }
-            )
-            .padding(.top, -AppTheme.Spacing.md)
-            .padding(.bottom, AppTheme.Spacing.xl)
-        }
-        .frame(maxWidth: .infinity)
-    }
-
-    private var decorativeCircles: some View {
-        ZStack {
-            Circle()
-                .fill(AppTheme.Colors.primaryPink.opacity(0.15))
-                .frame(width: 30, height: 30)
-                .offset(x: -120, y: -40)
-
-            Circle()
-                .fill(AppTheme.Colors.checkmarkBadgeBg.opacity(0.2))
-                .frame(width: 20, height: 20)
-                .offset(x: 130, y: -60)
-
-            Circle()
-                .fill(AppTheme.Colors.primaryPink.opacity(0.1))
-                .frame(width: 40, height: 40)
-                .offset(x: 100, y: 50)
-        }
     }
 
     // MARK: - Daily Insights Section
@@ -133,32 +119,48 @@ struct TodayView: View {
                 .padding(.horizontal, AppTheme.Spacing.lg)
             }
         }
+        .padding(.top, AppTheme.Spacing.sm)
         .padding(.bottom, AppTheme.Spacing.xl)
     }
 
-    // MARK: - During Period Section
-    private var duringPeriodSection: some View {
-        VStack(spacing: AppTheme.Spacing.md) {
-            Text("During your period")
+    // MARK: - Self-care Section
+    private var selfCareSection: some View {
+        VStack(spacing: 0) {
+            // Header
+            Text("Self-care during your period")
                 .font(AppTheme.Fonts.bodyBold)
                 .foregroundColor(AppTheme.Colors.textPrimary)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(AppTheme.Spacing.md)
-                .background(AppTheme.Colors.dayDetailSummaryBg)
-                .clipShape(RoundedRectangle(cornerRadius: AppTheme.CornerRadius.medium))
+                .padding(.horizontal, AppTheme.Spacing.lg)
+                .padding(.vertical, AppTheme.Spacing.md)
 
-            HStack(spacing: AppTheme.Spacing.sm) {
-                Image(systemName: "magnifyingglass")
-                    .foregroundColor(AppTheme.Colors.textSecondary)
-                Text("Search articles, videos and more")
-                    .font(AppTheme.Fonts.subheadline)
-                    .foregroundColor(AppTheme.Colors.textSecondary)
-                Spacer()
+            Divider()
+                .background(AppTheme.Colors.selfCareDivider)
+                .padding(.horizontal, AppTheme.Spacing.lg)
+
+            // Self-care items
+            HStack(spacing: 0) {
+                ForEach(viewModel.selfCareItems) { item in
+                    VStack(spacing: AppTheme.Spacing.sm) {
+                        Image(systemName: item.icon)
+                            .font(.system(size: 32))
+                            .foregroundColor(AppTheme.Colors.textPrimary)
+                            .frame(height: 44)
+
+                        Text(item.title)
+                            .font(AppTheme.Fonts.caption)
+                            .foregroundColor(AppTheme.Colors.textPrimary)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(2)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, AppTheme.Spacing.md)
+                }
             }
-            .padding(AppTheme.Spacing.md)
-            .background(AppTheme.Colors.searchBarBg)
-            .clipShape(RoundedRectangle(cornerRadius: AppTheme.CornerRadius.medium))
+            .padding(.horizontal, AppTheme.Spacing.md)
         }
+        .background(AppTheme.Colors.selfCareBg)
+        .clipShape(RoundedRectangle(cornerRadius: AppTheme.CornerRadius.large))
         .padding(.horizontal, AppTheme.Spacing.lg)
         .padding(.bottom, AppTheme.Spacing.xl)
     }

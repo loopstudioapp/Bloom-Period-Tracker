@@ -9,6 +9,7 @@ struct DailyInsight: Identifiable {
     let backgroundColor: Color
     let borderColor: Color?
     let hasActionButton: Bool
+    var ctaText: String? = nil
 }
 
 enum InsightType {
@@ -20,9 +21,42 @@ enum InsightType {
 
 struct MainInsightData {
     static let todayInsights: [DailyInsight] = [
-        DailyInsight(type: .logSymptoms, title: "Log your symptoms", subtitle: "Track how you feel today", iconName: "plus.circle.fill", backgroundColor: AppTheme.Colors.featurePeach, borderColor: nil, hasActionButton: true),
-        DailyInsight(type: .article, title: "Non-penetrative sex ideas", subtitle: nil, iconName: "heart.fill", backgroundColor: AppTheme.Colors.insightCardBg, borderColor: AppTheme.Colors.insightCardBorder, hasActionButton: false),
-        DailyInsight(type: .symptomInfo, title: "TENDER BREASTS", subtitle: "Why do they hurt?", iconName: "figure.stand", backgroundColor: AppTheme.Colors.insightCardBg, borderColor: AppTheme.Colors.insightCardBorder, hasActionButton: false),
-        DailyInsight(type: .article, title: "Coping w/ pregnancy paranoia", subtitle: nil, iconName: "brain.head.profile", backgroundColor: AppTheme.Colors.featureLightBlue, borderColor: nil, hasActionButton: false)
+        DailyInsight(
+            type: .logSymptoms,
+            title: "Log your\nsymptoms",
+            subtitle: nil,
+            iconName: "plus.circle.fill",
+            backgroundColor: AppTheme.Colors.insightCardBg,
+            borderColor: nil,
+            hasActionButton: true
+        ),
+        DailyInsight(
+            type: .article,
+            title: "Fertility\ncalculator",
+            subtitle: nil,
+            iconName: "heart.circle.fill",
+            backgroundColor: AppTheme.Colors.insightPurpleBg,
+            borderColor: nil,
+            hasActionButton: false
+        ),
+        DailyInsight(
+            type: .article,
+            title: "Legs up\nAfter Sex",
+            subtitle: nil,
+            iconName: "figure.cooldown",
+            backgroundColor: AppTheme.Colors.insightCoralBg,
+            borderColor: nil,
+            hasActionButton: false
+        ),
+        DailyInsight(
+            type: .symptomInfo,
+            title: "February\nSymptoms\nto expect",
+            subtitle: nil,
+            iconName: nil,
+            backgroundColor: AppTheme.Colors.insightLavenderBg,
+            borderColor: nil,
+            hasActionButton: false,
+            ctaText: "Find out more"
+        )
     ]
 }
