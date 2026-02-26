@@ -42,11 +42,14 @@ class CycleService: ObservableObject {
 
     // MARK: - Computed Cycle Metrics
 
-    /// Cycle length calculated from two logged periods, or default 28
+    /// Cycle length calculated from two logged periods, or default 28.
+    /// Validates that previous is before recent; falls back to 28 if dates are backwards.
     var cycleLength: Int {
         guard let recent = recentPeriodStart, let previous = previousPeriodStart else { return 28 }
         let days = cal.dateComponents([.day], from: previous, to: recent).day ?? 28
-        return max(days, 21) // sanity floor
+        // If dates are backwards (negative) or impossibly short, fall back to default
+        guard days >= 21 else { return 28 }
+        return min(days, 45) // cap at 45 days for sanity
     }
 
     /// Period length from most recent start→end, or default 5
@@ -212,8 +215,10 @@ class CycleService: ObservableObject {
         if daysSince < 0 { return .follicular }
         if daysSince < periodLength { return .period }
         if daysSince < ovulationDay - 3 { return .follicular }
-        if daysSince == ovulationDay { return .ovulation }
-        if daysSince >= ovulationDay - 3 && daysSince <= ovulationDay + 2 { return .fertile }
+        if daysSince >= ovulationDay - 3 && daysSince <= ovulationDay + 2 {
+            // Within fertile window — check if it's specifically ovulation day
+            return (daysSince >= ovulationDay - 1 && daysSince <= ovulationDay) ? .ovulation : .fertile
+        }
         return .luteal
     }
 }

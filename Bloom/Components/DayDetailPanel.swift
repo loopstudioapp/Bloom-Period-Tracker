@@ -45,9 +45,15 @@ struct DayDetailPanel: View {
                         .font(AppTheme.Fonts.bodyBold)
                         .foregroundColor(AppTheme.Colors.textPrimary)
 
-                    Text("Cycle day \(cycleDay)")
-                        .font(AppTheme.Fonts.subheadline)
-                        .foregroundColor(AppTheme.Colors.textSecondary)
+                    if cycleDay > 0 {
+                        Text("Cycle day \(cycleDay)")
+                            .font(AppTheme.Fonts.subheadline)
+                            .foregroundColor(AppTheme.Colors.textSecondary)
+                    } else {
+                        Text("No cycle data")
+                            .font(AppTheme.Fonts.subheadline)
+                            .foregroundColor(AppTheme.Colors.textSecondary)
+                    }
                 }
             }
 

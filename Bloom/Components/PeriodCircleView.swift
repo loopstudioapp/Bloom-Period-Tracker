@@ -35,9 +35,15 @@ struct PeriodCircleView: View {
 
             // Period day info
             HStack(spacing: AppTheme.Spacing.xs) {
-                Text("Period: Day \(periodDay)")
-                    .font(AppTheme.Fonts.body)
-                    .foregroundColor(AppTheme.Colors.heroSubtitleText.opacity(0.8))
+                if periodDay > 0 {
+                    Text("Period: Day \(periodDay)")
+                        .font(AppTheme.Fonts.body)
+                        .foregroundColor(AppTheme.Colors.heroSubtitleText.opacity(0.8))
+                } else {
+                    Text("Not on your period")
+                        .font(AppTheme.Fonts.body)
+                        .foregroundColor(AppTheme.Colors.heroSubtitleText.opacity(0.8))
+                }
                 Button(action: onLearnMoreTap) {
                     Image(systemName: "info.circle")
                         .font(.system(size: 14))

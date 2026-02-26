@@ -137,7 +137,12 @@ struct FullCalendarScreen: View {
         formatter.dateFormat = "MMMM d"
         let dateString = formatter.string(from: date)
 
-        let cycleDayNumber = max(1, (calendar.dateComponents([.day], from: viewModel.periodStartDate, to: date).day ?? 0) + 1)
+        let cycleDayNumber: Int
+        if let start = viewModel.periodStartDate {
+            cycleDayNumber = max(1, (calendar.dateComponents([.day], from: start, to: date).day ?? 0) + 1)
+        } else {
+            cycleDayNumber = 0 // No cycle data available
+        }
 
         return VStack(spacing: 0) {
             // Drag handle
