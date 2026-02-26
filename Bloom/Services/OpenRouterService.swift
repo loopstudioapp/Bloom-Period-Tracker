@@ -10,15 +10,64 @@ class OpenRouterService: ObservableObject {
     private let baseURL = "https://openrouter.ai/api/v1/chat/completions"
     private let model = "x-ai/grok-4.1-fast"
 
-    private let systemPrompt = """
-    You are Bloom, a friendly and knowledgeable period and cycle health assistant. \
-    You help users understand their menstrual cycle, symptoms, fertility windows, \
-    and overall reproductive health. You are warm, supportive, non-judgmental, \
-    and evidence-based. Keep responses concise and conversational. \
+    private let baseSystemPrompt = """
+    You are Bloom, a friendly and knowledgeable period and cycle health assistant \
+    inside the Bloom Period Tracker app. You help users understand their menstrual \
+    cycle, symptoms, fertility windows, and overall reproductive health. \
+    You are warm, supportive, non-judgmental, and evidence-based. \
+    Keep responses concise and conversational. \
     Use emoji occasionally to feel approachable. \
     Never provide medical diagnoses — always recommend consulting a healthcare \
-    provider for medical concerns.
+    provider for medical concerns. \
+    When the user asks about their cycle, refer to the live cycle data below \
+    to give personalized answers. If no cycle data is available, encourage them \
+    to log their period in the app.
     """
+
+    /// Builds the full system prompt with the user's live cycle data injected.
+    private var systemPrompt: String {
+        let cycle = CycleService.shared
+        var prompt = baseSystemPrompt
+
+        guard cycle.hasData else {
+            prompt += "\n\nThe user has not logged any period data yet."
+            return prompt
+        }
+
+        let df = DateFormatter()
+        df.dateStyle = .medium
+
+        let phase = cycle.currentPhase
+        let phaseNames: [CyclePhaseType: String] = [
+            .period: "menstrual (on their period)",
+            .follicular: "follicular",
+            .fertile: "fertile window",
+            .ovulation: "ovulation",
+            .luteal: "luteal"
+        ]
+
+        var lines: [String] = []
+        lines.append("\n\nUser's live cycle data (today is \(df.string(from: Date()))):")
+        lines.append("- Cycle length: \(cycle.cycleLength) days")
+        lines.append("- Period length: \(cycle.periodLength) days")
+        lines.append("- Current cycle day: \(cycle.currentCycleDay)")
+        lines.append("- Current phase: \(phaseNames[phase] ?? phase.rawValue)")
+
+        if cycle.isOnPeriod {
+            lines.append("- Period day: \(cycle.periodDay) of \(cycle.periodLength)")
+        }
+
+        lines.append("- Fertile window starts in: \(cycle.fertileDaysAway) days")
+        lines.append("- Predicted ovulation day: day \(cycle.ovulationDay) of cycle")
+
+        if let start = cycle.currentCycleStartDate {
+            let nextPeriod = cycle.nextCycleStart(from: start)
+            lines.append("- Next predicted period: \(df.string(from: nextPeriod))")
+        }
+
+        prompt += lines.joined(separator: "\n")
+        return prompt
+    }
 
     // MARK: - Types
 
