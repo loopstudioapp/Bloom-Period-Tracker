@@ -3,53 +3,37 @@ import SwiftUI
 struct WeightGraphView: View {
     @StateObject private var viewModel = AnalyticsViewModel()
 
-    @State private var cycleStartDate: Date = {
-        let cal = Calendar.current
-        var comps = DateComponents()
-        comps.year = 2024
-        comps.month = 1
-        comps.day = 25
-        return cal.date(from: comps) ?? Date()
-    }()
+    private let cycle = CycleService.shared
 
-    @State private var cycleEndDate: Date = {
-        let cal = Calendar.current
-        var comps = DateComponents()
-        comps.year = 2024
-        comps.month = 2
-        comps.day = 22
-        return cal.date(from: comps) ?? Date()
-    }()
+    @State private var cycleOffset: Int = 0
 
-    private var cycleService: CycleService { CycleService.shared }
+    private var cycleStartDate: Date {
+        let base = cycle.currentCycleStartDate ?? Date()
+        return Calendar.current.date(byAdding: .day, value: cycleOffset * cycle.cycleLength, to: base) ?? base
+    }
+
+    private var cycleEndDate: Date {
+        Calendar.current.date(byAdding: .day, value: cycle.cycleLength, to: cycleStartDate) ?? cycleStartDate
+    }
 
     private var periodStart: Date { cycleStartDate }
     private var fertileWindow: (start: Date, end: Date) {
-        cycleService.fertileWindow(from: cycleStartDate)
+        cycle.fertileWindow(from: cycleStartDate)
     }
     private var ovulationDate: Date {
-        cycleService.predictedOvulation(from: cycleStartDate)
+        cycle.predictedOvulation(from: cycleStartDate)
     }
 
     private var weightChartPoints: [WeightChartDataPoint] {
-        let cal = Calendar.current
-        let totalDays = cal.dateComponents([.day], from: cycleStartDate, to: cycleEndDate).day ?? 28
-        return (0..<totalDays).map { dayOffset in
-            let date = cal.date(byAdding: .day, value: dayOffset, to: cycleStartDate)!
-            let weight = 132.0 + Double.random(in: -2.0...2.0)
-            return WeightChartDataPoint(date: date, weight: weight)
-        }
+        // No weight persistence layer yet — return empty
+        []
     }
 
     private var cycleDateLabel: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d"
         let start = formatter.string(from: cycleStartDate)
-
-        let endFormatter = DateFormatter()
-        endFormatter.dateFormat = "MMM d"
-        let end = endFormatter.string(from: cycleEndDate)
-
+        let end = formatter.string(from: cycleEndDate)
         return "\(start) — \(end)"
     }
 
@@ -66,10 +50,7 @@ struct WeightGraphView: View {
                 // Cycle selector
                 HStack {
                     Button {
-                        // Navigate to previous cycle
-                        let cal = Calendar.current
-                        cycleStartDate = cal.date(byAdding: .day, value: -29, to: cycleStartDate) ?? cycleStartDate
-                        cycleEndDate = cal.date(byAdding: .day, value: -29, to: cycleEndDate) ?? cycleEndDate
+                        cycleOffset -= 1
                     } label: {
                         Image(systemName: "chevron.left")
                             .font(.system(size: 16, weight: .medium))
@@ -85,10 +66,7 @@ struct WeightGraphView: View {
                     Spacer()
 
                     Button {
-                        // Navigate to next cycle
-                        let cal = Calendar.current
-                        cycleStartDate = cal.date(byAdding: .day, value: 29, to: cycleStartDate) ?? cycleStartDate
-                        cycleEndDate = cal.date(byAdding: .day, value: 29, to: cycleEndDate) ?? cycleEndDate
+                        cycleOffset += 1
                     } label: {
                         Image(systemName: "chevron.right")
                             .font(.system(size: 16, weight: .medium))

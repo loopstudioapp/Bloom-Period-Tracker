@@ -181,8 +181,26 @@ struct SymptomPatternCard: View {
     // MARK: - Row Labels
 
     private func rowLabel(for index: Int) -> String {
-        let labels = ["Jan 25 Current", "Dec 26 30 days", "Nov 26 28 days"]
-        return index < labels.count ? labels[index] : "Cycle \(index + 1)"
+        let cycle = CycleService.shared
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d"
+
+        if index == 0 {
+            if let start = cycle.currentCycleStartDate {
+                return "\(formatter.string(from: start)) Current"
+            }
+            return "Current"
+        }
+
+        let previousCycles = cycle.previousCycles
+        if index - 1 < previousCycles.count {
+            let prev = previousCycles[index - 1]
+            let dateStr = formatter.string(from: prev.startDate)
+            let lenStr = prev.cycleLength.map { "\($0) days" } ?? ""
+            return "\(dateStr) \(lenStr)"
+        }
+
+        return "Cycle \(index + 1)"
     }
 
     // MARK: - Sizes

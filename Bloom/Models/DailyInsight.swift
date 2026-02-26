@@ -20,43 +20,51 @@ enum InsightType {
 }
 
 struct MainInsightData {
-    static let todayInsights: [DailyInsight] = [
-        DailyInsight(
-            type: .logSymptoms,
-            title: "Log your\nsymptoms",
-            subtitle: nil,
-            iconName: "plus.circle.fill",
-            backgroundColor: AppTheme.Colors.insightCardBg,
-            borderColor: nil,
-            hasActionButton: true
-        ),
-        DailyInsight(
-            type: .article,
-            title: "Fertility\ncalculator",
-            subtitle: nil,
-            iconName: "heart.circle.fill",
-            backgroundColor: AppTheme.Colors.insightPurpleBg,
-            borderColor: nil,
-            hasActionButton: false
-        ),
-        DailyInsight(
-            type: .article,
-            title: "Legs up\nAfter Sex",
-            subtitle: nil,
-            iconName: "figure.cooldown",
-            backgroundColor: AppTheme.Colors.insightCoralBg,
-            borderColor: nil,
-            hasActionButton: false
-        ),
-        DailyInsight(
-            type: .symptomInfo,
-            title: "February\nSymptoms\nto expect",
-            subtitle: nil,
-            iconName: nil,
-            backgroundColor: AppTheme.Colors.insightLavenderBg,
-            borderColor: nil,
-            hasActionButton: false,
-            ctaText: "Find out more"
-        )
-    ]
+    private static var currentMonthName: String {
+        let f = DateFormatter()
+        f.dateFormat = "MMMM"
+        return f.string(from: Date())
+    }
+
+    static var todayInsights: [DailyInsight] {
+        [
+            DailyInsight(
+                type: .logSymptoms,
+                title: "Log your\nsymptoms",
+                subtitle: nil,
+                iconName: "plus.circle.fill",
+                backgroundColor: AppTheme.Colors.insightCardBg,
+                borderColor: nil,
+                hasActionButton: true
+            ),
+            DailyInsight(
+                type: .article,
+                title: "Fertility\ncalculator",
+                subtitle: nil,
+                iconName: "heart.circle.fill",
+                backgroundColor: AppTheme.Colors.insightPurpleBg,
+                borderColor: nil,
+                hasActionButton: false
+            ),
+            DailyInsight(
+                type: .article,
+                title: "Legs up\nAfter Sex",
+                subtitle: nil,
+                iconName: "figure.cooldown",
+                backgroundColor: AppTheme.Colors.insightCoralBg,
+                borderColor: nil,
+                hasActionButton: false
+            ),
+            DailyInsight(
+                type: .symptomInfo,
+                title: "\(currentMonthName)\nSymptoms\nto expect",
+                subtitle: nil,
+                iconName: nil,
+                backgroundColor: AppTheme.Colors.insightLavenderBg,
+                borderColor: nil,
+                hasActionButton: false,
+                ctaText: "Find out more"
+            )
+        ]
+    }
 }

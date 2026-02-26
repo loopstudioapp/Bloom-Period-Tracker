@@ -2,14 +2,14 @@ import SwiftUI
 
 @MainActor
 class SettingsViewModel: ObservableObject {
-    @Published var userEmail: String = "julia88@gmail.com"
+    @Published var userEmail: String = ""
     @Published var selectedGoal: String = "Track cycle"
     @Published var showReminders: Bool = false
     @Published var showAppSettings: Bool = false
     @Published var showAnalysisMenu: Bool = false
     @Published var showReportPreview: Bool = false
     @Published var emailConfirmed: Bool = false
-    @Published var isPremium: Bool = true
+    @AppStorage("isPremiumUser") var isPremium: Bool = false
 
     let goals = ["Track cycle", "Get pregnant", "Track pregnancy"]
 

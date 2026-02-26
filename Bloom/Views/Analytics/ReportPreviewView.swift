@@ -3,9 +3,41 @@ import SwiftUI
 struct ReportPreviewView: View {
     @Environment(\.dismiss) private var dismiss
 
-    private let coverageStart = "December 26, 2023"
-    private let coverageEnd = "February 22, 2024"
-    private let exportedDate = "January 28, 2024"
+    private let cycle = CycleService.shared
+
+    private var coverageStart: String {
+        guard let prev = cycle.previousPeriodStart else {
+            return formatLong(cycle.currentCycleStartDate ?? Date())
+        }
+        return formatLong(prev)
+    }
+
+    private var coverageEnd: String {
+        let endDate = cycle.nextCycleStart(from: cycle.currentCycleStartDate ?? Date())
+        return formatLong(endDate)
+    }
+
+    private var exportedDate: String {
+        formatLong(Date())
+    }
+
+    private func formatLong(_ date: Date) -> String {
+        let f = DateFormatter()
+        f.dateFormat = "MMMM d, yyyy"
+        return f.string(from: date)
+    }
+
+    private func formatShort(_ date: Date) -> String {
+        let f = DateFormatter()
+        f.dateFormat = "MMM d"
+        return f.string(from: date)
+    }
+
+    private func formatFull(_ date: Date) -> String {
+        let f = DateFormatter()
+        f.dateFormat = "MMM d, yyyy"
+        return f.string(from: date)
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -130,33 +162,39 @@ struct ReportPreviewView: View {
                         .foregroundColor(AppTheme.Colors.textPrimary)
 
                     VStack(alignment: .leading, spacing: AppTheme.Spacing.xs) {
-                        Text("AVERAGE CYCLE LENGTH: 29 days")
+                        Text("AVERAGE CYCLE LENGTH: \(cycle.cycleLength) days")
                             .font(AppTheme.Fonts.captionBold)
                             .foregroundColor(AppTheme.Colors.textSecondary)
 
-                        Text("AVERAGE PERIOD LENGTH: 5 days")
+                        Text("AVERAGE PERIOD LENGTH: \(cycle.periodLength) days")
                             .font(AppTheme.Fonts.captionBold)
                             .foregroundColor(AppTheme.Colors.textSecondary)
                     }
 
-                    // Cycle bars
-                    CycleLengthBar(
-                        label: "CURRENT CYCLE",
-                        dateRange: "Jan 25 - Feb 22",
-                        periodDays: 4,
-                        totalDays: 29,
-                        isCurrent: true,
-                        averageDay: 29
-                    )
+                    // Current cycle bar
+                    if let currentStart = cycle.currentCycleStartDate {
+                        let endDate = cycle.nextCycleStart(from: currentStart)
+                        CycleLengthBar(
+                            label: "CURRENT CYCLE",
+                            dateRange: "\(formatShort(currentStart)) - \(formatShort(endDate))",
+                            periodDays: cycle.periodLength,
+                            totalDays: cycle.cycleLength,
+                            isCurrent: true,
+                            averageDay: cycle.cycleLength
+                        )
+                    }
 
-                    CycleLengthBar(
-                        label: "",
-                        dateRange: "Dec 26, 2023 - Jan 24, 2024",
-                        periodDays: 5,
-                        totalDays: 30,
-                        isCurrent: false,
-                        averageDay: 29
-                    )
+                    // Previous cycle bars
+                    ForEach(Array(cycle.previousCycles.enumerated()), id: \.offset) { _, prev in
+                        CycleLengthBar(
+                            label: "",
+                            dateRange: "\(formatFull(prev.startDate)) - \(formatFull(prev.endDate ?? prev.startDate))",
+                            periodDays: prev.periodLength,
+                            totalDays: prev.cycleLength ?? cycle.cycleLength,
+                            isCurrent: false,
+                            averageDay: cycle.cycleLength
+                        )
+                    }
                 }
             }
             .padding(AppTheme.Spacing.md)
