@@ -40,6 +40,8 @@
 		26841084A3B3A3487F51D415 /* CredibilityScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA864A41F810BB9FD266AFF /* CredibilityScreen.swift */; };
 		2A33DFE56833AEE6DBE00DF3 /* NumberOneHeroIllustration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F619EBC58B7CBAB1D88987 /* NumberOneHeroIllustration.swift */; };
 		2A41FC1EF542C7F27F9CC878 /* DailyInsight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE524381B1B1287732FC3CE0 /* DailyInsight.swift */; };
+		A1F2B3C4D5E6F7A8B9C0D1E2 /* InsightArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D4E5F6A7B8C9D0E1F2A3B4 /* InsightArticle.swift */; };
+		D5E6F7A8B9C0D1E2F3A4B5C6 /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F8A9B0C1D2E3F4A5B6C7D8 /* ArticleDetailView.swift */; };
 		2A80B943717119B36AC68DC7 /* ReminderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D525D3DC8CFC8CA69C045291 /* ReminderRow.swift */; };
 		2B6DF635A5BF60784A16091A /* BloomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E7C9DADDFE46AC00B6285 /* BloomTabView.swift */; };
 		2BDD24F0E7C8AB79C32C2197 /* YearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BEB072B12B55ADC47CE9B4 /* YearPicker.swift */; };
@@ -337,6 +339,8 @@
 		BB0566D7E887B5586E82021C /* AlertBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBanner.swift; sourceTree = "<group>"; };
 		BC5B8BDACEBE4CA467D0D68E /* NotificationPermissionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionScreen.swift; sourceTree = "<group>"; };
 		BE524381B1B1287732FC3CE0 /* DailyInsight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyInsight.swift; sourceTree = "<group>"; };
+		C3D4E5F6A7B8C9D0E1F2A3B4 /* InsightArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightArticle.swift; sourceTree = "<group>"; };
+		E7F8A9B0C1D2E3F4A5B6C7D8 /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
 		C22C0BD794827528AD8B55D6 /* CycleLengthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleLengthView.swift; sourceTree = "<group>"; };
 		C29E932FC9E4695C467459A5 /* ValueComparisonScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueComparisonScreen.swift; sourceTree = "<group>"; };
 		C2D833D4A88694685C70D095 /* OnboardingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModels.swift; sourceTree = "<group>"; };
@@ -498,11 +502,20 @@
 				D9D471C028CE68964A8354E4 /* Auth */,
 				E5D3BFDA1F4E3C4C805AF19F /* Calendar */,
 				47D4D1B6C3CD59E0B6343504 /* Chat */,
+				F9A0B1C2D3E4F5A6B7C8D9E0 /* Insights */,
 				684AE177EAB4E15E1A7C28D7 /* Logging */,
 				5C3F0E5F89820FE8B7C07088 /* Main */,
 				6D46A1A9241776F469F8342A /* Settings */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F9A0B1C2D3E4F5A6B7C8D9E0 /* Insights */ = {
+			isa = PBXGroup;
+			children = (
+				E7F8A9B0C1D2E3F4A5B6C7D8 /* ArticleDetailView.swift */,
+			);
+			path = Insights;
 			sourceTree = "<group>";
 		};
 		5076EED98511675A44D6C267 /* Theme */ = {
@@ -666,6 +679,7 @@
 				FB573060B9EDCEB97EC4CFC6 /* ChatMessage.swift */,
 				8AE7562DF09A51403AC402E2 /* CycleData.swift */,
 				BE524381B1B1287732FC3CE0 /* DailyInsight.swift */,
+				C3D4E5F6A7B8C9D0E1F2A3B4 /* InsightArticle.swift */,
 				C2D833D4A88694685C70D095 /* OnboardingModels.swift */,
 				0DD8927D824D6284B31D5129 /* Reminder.swift */,
 				C6F210C583D08E3E00FB5F4A /* SymptomLog.swift */,
@@ -815,6 +829,7 @@
 				4EC0B2FB912ED3DF108D9DBD /* AppSettingsView.swift in Sources */,
 				CE2F7B2C3F951A6CD0F6B444 /* AppTheme.swift in Sources */,
 				CAB368E352506EC2C9C08B28 /* ArticleCardsCollage.swift in Sources */,
+				D5E6F7A8B9C0D1E2F3A4B5C6 /* ArticleDetailView.swift in Sources */,
 				E4B6BE023F3E2F6B9E9D812F /* AssistantPopupCard.swift in Sources */,
 				C79368CB5C57E2828443D0CF /* BearAvatarView.swift in Sources */,
 				13434FCBD5BD3CA888F315A8 /* BirthControlEducationScreen.swift in Sources */,
@@ -898,6 +913,7 @@
 				FAA8D19DDC05085B01D9A8D5 /* ISOShieldBadge.swift in Sources */,
 				FEA39DFF8CF2B84BBBC82473 /* IllustrationViews.swift in Sources */,
 				3D9FA32473FFF61B571D9694 /* InsightCard.swift in Sources */,
+				A1F2B3C4D5E6F7A8B9C0D1E2 /* InsightArticle.swift in Sources */,
 				B5CC066EC22E73D9DF7CD928 /* InsightsView.swift in Sources */,
 				1D44A1A0DBC69C0D5C15AC79 /* IntimateQuestionsIllustration.swift in Sources */,
 				F53CC6E4161E9E70AFE04CB7 /* LongPressButton.swift in Sources */,

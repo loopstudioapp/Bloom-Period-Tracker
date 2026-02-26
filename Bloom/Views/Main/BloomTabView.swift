@@ -16,7 +16,6 @@ struct BloomTabView: View {
                     Label(BloomTab.insights.title, systemImage: BloomTab.insights.icon)
                 }
                 .tag(BloomTab.insights)
-                .badge("")
 
             BloomChatView()
                 .tabItem {

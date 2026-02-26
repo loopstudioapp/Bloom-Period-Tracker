@@ -6,18 +6,6 @@ struct SettingsView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: AppTheme.Spacing.md) {
-                    // Alert banner for unconfirmed email
-                    if !viewModel.emailConfirmed {
-                        AlertBanner(
-                            message: "Please confirm your email address to secure your account.",
-                            actionTitle: "Continue",
-                            onAction: {}
-                        )
-                    }
-
-                    // Save with Bloom Friends card
-                    bloomFriendsCard
-
                     // Profile card
                     ProfileCard(
                         email: viewModel.userEmail,
@@ -53,46 +41,6 @@ struct SettingsView: View {
                 AppSettingsView()
             }
         }
-    }
-
-    // MARK: - Bloom Friends Card
-
-    private var bloomFriendsCard: some View {
-        VStack(spacing: AppTheme.Spacing.md) {
-            FriendAvatarRow(
-                avatars: viewModel.friendAvatars.map { emoji, color in
-                    FriendAvatar(emoji: emoji, color: color)
-                }
-            )
-
-            Text("Save with Bloom Friends")
-                .font(AppTheme.Fonts.bodyBold)
-                .foregroundColor(AppTheme.Colors.textPrimary)
-
-            Text("Invite family and friends to join Bloom Premium.")
-                .font(AppTheme.Fonts.subheadline)
-                .foregroundColor(AppTheme.Colors.textSecondary)
-                .multilineTextAlignment(.center)
-
-            Button(action: {}) {
-                Text("Try Bloom Friends")
-                    .font(AppTheme.Fonts.subheadlineBold)
-                    .foregroundColor(AppTheme.Colors.primaryPink)
-                    .padding(.horizontal, AppTheme.Spacing.xl)
-                    .padding(.vertical, AppTheme.Spacing.sm)
-                    .background(
-                        Capsule()
-                            .stroke(AppTheme.Colors.primaryPink, lineWidth: 1.5)
-                    )
-            }
-            .buttonStyle(.plain)
-        }
-        .padding(AppTheme.Spacing.lg)
-        .frame(maxWidth: .infinity)
-        .background(
-            RoundedRectangle(cornerRadius: AppTheme.CornerRadius.large)
-                .fill(Color.white)
-        )
     }
 
     // MARK: - Goal Section

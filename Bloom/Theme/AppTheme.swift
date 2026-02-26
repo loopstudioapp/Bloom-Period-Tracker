@@ -290,6 +290,13 @@ struct AppTheme {
             endPoint: .bottom
         )
 
+        /// Teal/sage gradient used on the Today hero when user is NOT on their period
+        static let todayHeroGradientCalm = LinearGradient(
+            colors: [Color(hex: "#E8F5F0"), Color(hex: "#C5E8E0"), Color(hex: "#8ECFC2")],
+            startPoint: .top,
+            endPoint: .bottom
+        )
+
         static let partnerCardGradient = LinearGradient(
             colors: [partnerGradientStart, partnerGradientEnd],
             startPoint: .topLeading,

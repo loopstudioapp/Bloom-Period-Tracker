@@ -12,13 +12,10 @@ class TodayViewModel: ObservableObject {
 
     @Published var dailyInsights: [DailyInsight] = MainInsightData.todayInsights
     @Published var isUpdatingPredictions: Bool = false
-    @Published var showHealthAssistantPopup: Bool = true
-    @Published var healthAssistantMessage: String = "Hi! I noticed that you logged mood swings. Do you want to talk about it?"
     @Published var notificationCount: Int = 1
     @Published var showDailyLogging: Bool = false
     @Published var showCalendar: Bool = false
     @Published var showSettings: Bool = false
-    @Published var showHealthChat: Bool = false
 
     // MARK: - Computed from CycleService
 
@@ -26,6 +23,7 @@ class TodayViewModel: ObservableObject {
     var periodDay: Int { cycle.periodDay }
     var fertileDaysAway: Int { cycle.fertileDaysAway }
     var hasData: Bool { cycle.hasData }
+    var isOnPeriod: Bool { cycle.isOnPeriod }
 
     var currentMonth: String {
         let formatter = DateFormatter()
@@ -91,9 +89,4 @@ class TodayViewModel: ObservableObject {
         )
     ]
 
-    func dismissHealthAssistantPopup() {
-        withAnimation(AppTheme.Animation.standard) {
-            showHealthAssistantPopup = false
-        }
-    }
 }

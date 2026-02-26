@@ -21,37 +21,15 @@ struct TodayView: View {
 
     var body: some View {
         NavigationStack {
-            ZStack(alignment: .bottom) {
-                ScrollView(.vertical, showsIndicators: false) {
-                    VStack(spacing: 0) {
-                        heroSection
-                        dailyInsightsSection
-                        selfCareSection
-                        myCyclesSection
-                        symptomPatternsSection
-                    }
-                    .constrainedWidth()
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 0) {
+                    heroSection
+                    dailyInsightsSection
+                    selfCareSection
+                    myCyclesSection
+                    symptomPatternsSection
                 }
-
-                // Health Assistant Popup
-                if viewModel.showHealthAssistantPopup {
-                    AssistantPopupCard(
-                        title: "Bloom Health Assistant",
-                        message: viewModel.healthAssistantMessage,
-                        ctaText: "Yes, let's talk",
-                        onCTA: {
-                            viewModel.dismissHealthAssistantPopup()
-                            viewModel.showHealthChat = true
-                        },
-                        onDismiss: {
-                            viewModel.dismissHealthAssistantPopup()
-                        }
-                    )
-                    .padding(.horizontal, AppTheme.Spacing.md)
-                    .padding(.bottom, AppTheme.Spacing.sm)
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
-                    .animation(.spring(response: 0.5, dampingFraction: 0.8), value: viewModel.showHealthAssistantPopup)
-                }
+                .constrainedWidth()
             }
             .background(AppTheme.Colors.background)
             .sheet(isPresented: $viewModel.showDailyLogging) {
@@ -61,19 +39,22 @@ struct TodayView: View {
             .fullScreenCover(isPresented: $viewModel.showCalendar) {
                 FullCalendarScreen()
             }
-            .fullScreenCover(isPresented: $viewModel.showHealthChat) {
-                HealthAssistantChatView()
-            }
         }
     }
 
     // MARK: - Hero Section (Header + Week Strip + Fertility Info)
     private var heroSection: some View {
         ZStack(alignment: .top) {
-            // Curved gradient background
-            AppTheme.Colors.todayHeroGradient
-                .clipShape(CurvedBottomShape())
-                .ignoresSafeArea(edges: .top)
+            // Curved gradient background — teal/sage when not on period, warm pink when on period
+            Group {
+                if viewModel.isOnPeriod {
+                    AppTheme.Colors.todayHeroGradient
+                } else {
+                    AppTheme.Colors.todayHeroGradientCalm
+                }
+            }
+            .clipShape(CurvedBottomShape())
+            .ignoresSafeArea(edges: .top)
 
             VStack(spacing: 0) {
                 TopNavBar(
