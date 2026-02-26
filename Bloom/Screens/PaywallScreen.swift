@@ -103,9 +103,6 @@ struct PaywallScreen: View {
                                 .foregroundColor(AppTheme.Colors.paywallTextMuted)
                         }
 
-                        Text("Auto-renewable. Cancel anytime.")
-                            .font(AppTheme.Fonts.caption)
-                            .foregroundColor(AppTheme.Colors.paywallTextMuted.opacity(0.7))
                     }
                     .padding(.horizontal, AppTheme.Spacing.lg)
                     .padding(.bottom, AppTheme.Spacing.xxl)
