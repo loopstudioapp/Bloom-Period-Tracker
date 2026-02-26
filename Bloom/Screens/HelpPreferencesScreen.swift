@@ -32,12 +32,6 @@ struct HelpPreferencesScreen: View {
             .padding(.bottom, AppTheme.Spacing.xl)
         }
         .background(AppTheme.Colors.background)
-        .onAppear {
-            if viewModel.selectedHelpPreferences.isEmpty {
-                viewModel.toggleHelpPreference(.masturbation)
-                viewModel.toggleHelpPreference(.decodeDischarge)
-            }
-        }
     }
 
     // MARK: - Header

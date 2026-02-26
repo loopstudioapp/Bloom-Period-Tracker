@@ -116,7 +116,7 @@ enum OnboardingStep: Int, CaseIterable {
     var showsBackButton: Bool {
         switch self {
         case .welcomeBack, .splash, .credibility, .greeting, .trackingPermission, .notificationPermission,
-             .thankYouHonesty, .healthKitPermission,
+             .cycleSexEducation, .discoverPatterns, .thankYouHonesty, .healthKitPermission,
              .personalizing,
              .valueComparison, .commitmentPledge, .welcomeSplash, .paywall, .premiumConfirmation:
             return false
@@ -161,8 +161,15 @@ class OnboardingCoordinator: ObservableObject {
         }
     }
 
+    /// Steps that should be skipped entirely during onboarding
+    private static let skippedSteps: Set<OnboardingStep> = [.referralSource]
+
     func advance() {
-        guard let nextStep = OnboardingStep(rawValue: currentStep.rawValue + 1) else {
+        var nextRaw = currentStep.rawValue + 1
+        while let step = OnboardingStep(rawValue: nextRaw), Self.skippedSteps.contains(step) {
+            nextRaw += 1
+        }
+        guard let nextStep = OnboardingStep(rawValue: nextRaw) else {
             completeOnboarding()
             return
         }
@@ -174,7 +181,11 @@ class OnboardingCoordinator: ObservableObject {
     }
 
     func goBack() {
-        guard let previousStep = OnboardingStep(rawValue: currentStep.rawValue - 1),
+        var prevRaw = currentStep.rawValue - 1
+        while let step = OnboardingStep(rawValue: prevRaw), Self.skippedSteps.contains(step) {
+            prevRaw -= 1
+        }
+        guard let previousStep = OnboardingStep(rawValue: prevRaw),
               previousStep.rawValue >= 0 else { return }
         navigationDirection = .backward
         withAnimation(AppTheme.Animation.standard) {

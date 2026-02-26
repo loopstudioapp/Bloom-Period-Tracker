@@ -537,7 +537,7 @@ struct OnboardingData {
             price: "$49.99/year",
             perPeriod: "$0.96/week",
             savings: "Save 86%",
-            trialText: "3-day free trial",
+            trialText: "No payment today",
             isMostPopular: true
         ),
         SubscriptionPlan(

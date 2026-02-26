@@ -26,7 +26,7 @@ struct SubscriptionPlanCard: View {
                             .foregroundColor(AppTheme.Colors.textWhite)
 
                         if plan.isMostPopular {
-                            Text("BEST VALUE")
+                            Text("3 DAY FREE TRIAL")
                                 .font(AppTheme.Fonts.captionBold)
                                 .foregroundColor(AppTheme.Colors.textWhite)
                                 .padding(.horizontal, AppTheme.Spacing.sm)

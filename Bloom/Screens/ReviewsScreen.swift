@@ -1,4 +1,5 @@
 import SwiftUI
+import StoreKit
 
 struct ReviewsScreen: View {
     @EnvironmentObject var coordinator: OnboardingCoordinator
@@ -33,12 +34,28 @@ struct ReviewsScreen: View {
             .padding(.bottom, AppTheme.Spacing.xl)
         }
         .background(AppTheme.Colors.background)
+        .onAppear {
+            requestAppReview()
+        }
+    }
+
+    // MARK: - App Store Review
+
+    private func requestAppReview() {
+        if let scene = UIApplication.shared.connectedScenes
+            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+            SKStoreReviewController.requestReview(in: scene)
+        }
     }
 
     // MARK: - Rating Highlight
 
     private var ratingHighlight: some View {
         VStack(spacing: AppTheme.Spacing.sm) {
+            Text("Give Us A Rating")
+                .font(AppTheme.Fonts.title2)
+                .foregroundColor(AppTheme.Colors.textPrimary)
+
             HStack(spacing: AppTheme.Spacing.xs) {
                 ForEach(0..<5, id: \.self) { _ in
                     Image(systemName: "star.fill")

@@ -24,11 +24,6 @@ struct PregnancyStatusScreen: View {
             .padding(.horizontal, AppTheme.Spacing.lg)
 
             Spacer()
-
-            Text("Log in")
-                .font(AppTheme.Fonts.body)
-                .foregroundColor(AppTheme.Colors.primaryPink)
-                .padding(.bottom, AppTheme.Spacing.xl)
         }
     }
 }

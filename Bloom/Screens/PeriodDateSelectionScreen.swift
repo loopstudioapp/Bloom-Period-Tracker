@@ -26,7 +26,7 @@ struct PeriodDateSelectionScreen: View {
                 .padding(.bottom, AppTheme.Spacing.xxl)
             }
 
-            PillButton(title: "Next", style: .teal, isEnabled: hasSelection) {
+            PillButton(title: "Next", isEnabled: hasSelection) {
                 viewModel.recentPeriodStartDate = startDate
                 viewModel.recentPeriodEndDate = endDate
                 coordinator.advance()
