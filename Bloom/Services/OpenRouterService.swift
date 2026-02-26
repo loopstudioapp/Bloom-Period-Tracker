@@ -4,11 +4,11 @@ import Foundation
 class OpenRouterService: ObservableObject {
     static let shared = OpenRouterService()
 
-    // MARK: - Configuration (replace with your OpenRouter API key)
-    static var apiKey: String = "YOUR_OPENROUTER_API_KEY_HERE"
+    // MARK: - Configuration
+    static var apiKey: String = Secrets.openRouterAPIKey
 
     private let baseURL = "https://openrouter.ai/api/v1/chat/completions"
-    private let model = "openai/gpt-4o-mini"
+    private let model = "x-ai/grok-4.1-fast"
 
     private let systemPrompt = """
     You are Bloom, a friendly and knowledgeable period and cycle health assistant. \
@@ -66,7 +66,7 @@ class OpenRouterService: ObservableObject {
         onComplete: @escaping () -> Void,
         onError: @escaping (Error) -> Void
     ) async {
-        guard Self.apiKey != "YOUR_OPENROUTER_API_KEY_HERE" else {
+        guard !Self.apiKey.isEmpty else {
             onError(ServiceError.apiKeyMissing)
             return
         }

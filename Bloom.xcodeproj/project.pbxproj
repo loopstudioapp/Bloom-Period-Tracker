@@ -58,6 +58,7 @@
 		3D9FA32473FFF61B571D9694 /* InsightCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFE91CC9D134D029BEADA06 /* InsightCard.swift */; };
 		3E185BED34EA8D891407AAFD /* GoalPillSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83F59A70DAB128B3343CFF9 /* GoalPillSelector.swift */; };
 		3E4914586B90F48BD5FAC716 /* ReportPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47BCAC1992A10C98C843429 /* ReportPreviewView.swift */; };
+		3E8D1F6A9C2B5047E8D3FA61 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F9C2E1D8B4A6F5E0C7D92 /* Secrets.swift */; };
 		3ED7A526B3C380702CB37920 /* TopNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC24550C19B1915C8C1A717 /* TopNavBar.swift */; };
 		42735D3639D248AC579AED22 /* CycleSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14348077217A146FA885914B /* CycleSummaryCard.swift */; };
 		42F6360EBF79C0647DC71E10 /* PeriodFeelingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEA6383112F0D806B242CA /* PeriodFeelingsScreen.swift */; };
@@ -286,6 +287,7 @@
 		78B4911B43B3C444712A1C42 /* CycleReportChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleReportChatView.swift; sourceTree = "<group>"; };
 		79526FC94C789605E1A94E09 /* CalendarPreviewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPreviewScreen.swift; sourceTree = "<group>"; };
 		7A1394762CC5039A9A7ADA8A /* SparklingHeart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparklingHeart.swift; sourceTree = "<group>"; };
+		7A3F9C2E1D8B4A6F5E0C7D92 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		7B13BA8F707E8D459D727B1D /* DischargeAwarenessScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DischargeAwarenessScreen.swift; sourceTree = "<group>"; };
 		7B9D5F6DFFE2B168B73C0255 /* PremiumConfirmationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumConfirmationScreen.swift; sourceTree = "<group>"; };
 		7D6DA6665185FF9B5F2167DE /* ThankYouHonestyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankYouHonestyScreen.swift; sourceTree = "<group>"; };
@@ -693,6 +695,7 @@
 				5078BA76802551862AE0A856 /* CycleService.swift */,
 				1808E0662F4F64F2481DF70B /* HealthKitService.swift */,
 				2725FB9535CA9B3A2E2292DC /* OpenRouterService.swift */,
+				7A3F9C2E1D8B4A6F5E0C7D92 /* Secrets.swift */,
 				00EA49F1A6682BEF6BB0D5AD /* SymptomService.swift */,
 			);
 			path = Services;
@@ -968,6 +971,7 @@
 				6B1E8EB7B73563129EAB76CF /* ReviewCarousel.swift in Sources */,
 				1BB3710F86299A464864A10C /* ReviewsScreen.swift in Sources */,
 				4FBD5CBD6D01E788881227D8 /* SecretChatsView.swift in Sources */,
+				3E8D1F6A9C2B5047E8D3FA61 /* Secrets.swift in Sources */,
 				19AEE302C423C3293FBE3C4D /* SelectableOptionRow.swift in Sources */,
 				D658FF302D635FA8690D087F /* SelfOrPartnerScreen.swift in Sources */,
 				117C58853CFC2F10CA8430F8 /* SettingsView.swift in Sources */,
