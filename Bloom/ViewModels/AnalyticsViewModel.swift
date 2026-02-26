@@ -2,8 +2,10 @@ import SwiftUI
 
 @MainActor
 class AnalyticsViewModel: ObservableObject {
-    @Published var averageCycleLength: Int = 30
-    @Published var averagePeriodLength: Int = 5
+    private let cycle = CycleService.shared
+
+    var averageCycleLength: Int { cycle.cycleLength }
+    var averagePeriodLength: Int { cycle.periodLength }
 
     struct CycleBar: Identifiable {
         let id = UUID()
@@ -14,18 +16,79 @@ class AnalyticsViewModel: ObservableObject {
         let isCurrent: Bool
     }
 
+    private static let dateFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.dateFormat = "MMM d, yyyy"
+        return f
+    }()
+
+    private static let shortDateFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.dateFormat = "MMM d"
+        return f
+    }()
+
     var cycleBars: [CycleBar] {
-        [
-            CycleBar(label: "CURRENT CYCLE", dateRange: "Jan 25 - Feb 22", periodDays: 4, totalDays: 29, isCurrent: true),
-            CycleBar(label: "", dateRange: "Dec 26, 2023 - Jan 24, 2024", periodDays: 5, totalDays: 30, isCurrent: false)
-        ]
+        var bars: [CycleBar] = []
+
+        if let current = cycle.currentCycle {
+            let startStr = Self.shortDateFormatter.string(from: current.startDate)
+            let endDate = cycle.nextCycleStart(from: current.startDate)
+            let endStr = Self.shortDateFormatter.string(from: endDate)
+            bars.append(CycleBar(
+                label: "CURRENT CYCLE",
+                dateRange: "\(startStr) – \(endStr)",
+                periodDays: current.periodLength,
+                totalDays: cycle.cycleLength,
+                isCurrent: true
+            ))
+        }
+
+        for prev in cycle.previousCycles {
+            let startStr = Self.dateFormatter.string(from: prev.startDate)
+            let endStr = Self.dateFormatter.string(from: prev.endDate ?? prev.startDate)
+            bars.append(CycleBar(
+                label: "",
+                dateRange: "\(startStr) – \(endStr)",
+                periodDays: prev.periodLength,
+                totalDays: prev.cycleLength ?? cycle.cycleLength,
+                isCurrent: false
+            ))
+        }
+
+        return bars
     }
 
     var periodBars: [CycleBar] {
-        [
-            CycleBar(label: "CURRENT PERIOD", dateRange: "Jan 25 – Jan 29", periodDays: 4, totalDays: 5, isCurrent: true),
-            CycleBar(label: "", dateRange: "Dec 26, 2023 – Dec 30, 2023", periodDays: 5, totalDays: 5, isCurrent: false)
-        ]
+        var bars: [CycleBar] = []
+
+        if let current = cycle.currentCycle {
+            let startStr = Self.shortDateFormatter.string(from: current.startDate)
+            let periodEnd = cycle.predictedPeriodEnd(from: current.startDate)
+            let endStr = Self.shortDateFormatter.string(from: periodEnd)
+            bars.append(CycleBar(
+                label: "CURRENT PERIOD",
+                dateRange: "\(startStr) – \(endStr)",
+                periodDays: current.periodLength,
+                totalDays: cycle.periodLength,
+                isCurrent: true
+            ))
+        }
+
+        for prev in cycle.previousCycles {
+            let startStr = Self.dateFormatter.string(from: prev.startDate)
+            let periodEnd = prev.endDate ?? cycle.predictedPeriodEnd(from: prev.startDate)
+            let endStr = Self.dateFormatter.string(from: periodEnd)
+            bars.append(CycleBar(
+                label: "",
+                dateRange: "\(startStr) – \(endStr)",
+                periodDays: prev.periodLength,
+                totalDays: prev.periodLength,
+                isCurrent: false
+            ))
+        }
+
+        return bars
     }
 
     let eventCategories = ["Symptoms", "Steps", "Weight", "Vaginal Discharge", "Mood", "Water"]
@@ -37,6 +100,7 @@ class AnalyticsViewModel: ObservableObject {
     }
 
     var weightData: [WeightDataPoint] {
-        [WeightDataPoint(date: Date(), weight: 132.1)]
+        // No weight persistence layer yet
+        []
     }
 }

@@ -173,19 +173,23 @@ struct TodayView: View {
                 .foregroundColor(AppTheme.Colors.textPrimary)
                 .padding(.horizontal, AppTheme.Spacing.lg)
 
-            CycleHistoryCard(
-                currentCycle: viewModel.currentCycle,
-                previousCycles: viewModel.previousCycles,
-                onSeeAll: {},
-                onLogPrevious: {}
-            )
-            .padding(.horizontal, AppTheme.Spacing.lg)
+            if let currentCycle = viewModel.currentCycle {
+                CycleHistoryCard(
+                    currentCycle: currentCycle,
+                    previousCycles: viewModel.previousCycles,
+                    onSeeAll: {},
+                    onLogPrevious: {}
+                )
+                .padding(.horizontal, AppTheme.Spacing.lg)
+            }
 
-            CycleSummaryCard(
-                metrics: viewModel.cycleSummaryMetrics,
-                onLogPeriods: {}
-            )
-            .padding(.horizontal, AppTheme.Spacing.lg)
+            if !viewModel.cycleSummaryMetrics.isEmpty {
+                CycleSummaryCard(
+                    metrics: viewModel.cycleSummaryMetrics,
+                    onLogPeriods: {}
+                )
+                .padding(.horizontal, AppTheme.Spacing.lg)
+            }
         }
         .padding(.bottom, AppTheme.Spacing.xl)
     }

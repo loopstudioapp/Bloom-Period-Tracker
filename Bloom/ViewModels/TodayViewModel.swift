@@ -8,9 +8,8 @@ struct SelfCareItem: Identifiable {
 
 @MainActor
 class TodayViewModel: ObservableObject {
-    @Published var currentCycleDay: Int = 4
-    @Published var periodDay: Int = 3
-    @Published var fertileDaysAway: Int = 6
+    private let cycle = CycleService.shared
+
     @Published var dailyInsights: [DailyInsight] = MainInsightData.todayInsights
     @Published var isUpdatingPredictions: Bool = false
     @Published var showHealthAssistantPopup: Bool = true
@@ -21,6 +20,13 @@ class TodayViewModel: ObservableObject {
     @Published var showSettings: Bool = false
     @Published var showHealthChat: Bool = false
 
+    // MARK: - Computed from CycleService
+
+    var currentCycleDay: Int { cycle.currentCycleDay }
+    var periodDay: Int { cycle.periodDay }
+    var fertileDaysAway: Int { cycle.fertileDaysAway }
+    var hasData: Bool { cycle.hasData }
+
     var currentMonth: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM d"
@@ -29,23 +35,8 @@ class TodayViewModel: ObservableObject {
 
     var periodText: String { "Day \(periodDay)" }
 
-    let currentCycle = CycleEntry(
-        startDate: Calendar.current.date(byAdding: .day, value: -3, to: Date())!,
-        endDate: nil,
-        periodLength: 4,
-        cycleLength: nil,
-        isCurrentCycle: true
-    )
-
-    let previousCycles: [CycleEntry] = [
-        CycleEntry(
-            startDate: Calendar.current.date(byAdding: .day, value: -33, to: Date())!,
-            endDate: Calendar.current.date(byAdding: .day, value: -4, to: Date()),
-            periodLength: 5,
-            cycleLength: 30,
-            isCurrentCycle: false
-        )
-    ]
+    var currentCycle: CycleEntry? { cycle.currentCycle }
+    var previousCycles: [CycleEntry] { cycle.previousCycles }
 
     var weekDays: [WeekDay] {
         let cal = Calendar.current
@@ -53,23 +44,27 @@ class TodayViewModel: ObservableObject {
         let weekday = cal.component(.weekday, from: today)
         let startOfWeek = cal.date(byAdding: .day, value: -(weekday - 2), to: today)!
 
+        let cycleStart = cycle.currentCycleStartDate ?? today
+        let periodLen = cycle.periodLength
+        let ovDay = cycle.ovulationDay
+
         return (0..<7).map { offset in
             let date = cal.date(byAdding: .day, value: offset, to: startOfWeek)!
             let day = cal.component(.day, from: date)
             let letters = ["M", "T", "W", "T", "F", "S", "S"]
-            let periodStartDay = cal.component(.day, from: currentCycle.startDate)
-            let isPeriod = day >= periodStartDay && day < periodStartDay + 4
             let isToday = cal.isDateInToday(date)
-            // Mark the day after the period ends as predicted
-            let predictedDay = periodStartDay + 4
-            let isFertile = !isPeriod && !isToday && day == predictedDay
+
+            let daysSinceCycleStart = cal.dateComponents([.day], from: cycleStart, to: date).day ?? -1
+            let isPeriod = daysSinceCycleStart >= 0 && daysSinceCycleStart < periodLen
+            let isFertile = daysSinceCycleStart >= (ovDay - 3) && daysSinceCycleStart <= (ovDay + 2)
+
             return WeekDay(
                 date: date,
                 dayNumber: day,
                 dayLetter: letters[offset],
                 isPeriod: isPeriod,
                 isToday: isToday,
-                isFertile: isFertile
+                isFertile: isFertile && !isPeriod
             )
         }
     }
@@ -80,11 +75,7 @@ class TodayViewModel: ObservableObject {
         SelfCareItem(icon: "hand.raised.fingers.spread", title: "Trying, but no\npregnancy")
     ]
 
-    let cycleSummaryMetrics: [CycleMetric] = [
-        CycleMetric(label: "Previous cycle length", value: "30 days", status: .abnormal, statusLabel: "ABNORMAL"),
-        CycleMetric(label: "Previous period length", value: "5 days", status: .normal, statusLabel: "NORMAL"),
-        CycleMetric(label: "Cycle length variation", value: "26–37 days", status: .irregular, statusLabel: "IRREGULAR")
-    ]
+    var cycleSummaryMetrics: [CycleMetric] { cycle.cycleSummaryMetrics }
 
     let symptomPatterns: [SymptomPattern] = [
         SymptomPattern(

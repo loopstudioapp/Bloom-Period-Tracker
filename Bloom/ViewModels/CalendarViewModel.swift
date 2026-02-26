@@ -6,24 +6,31 @@ class CalendarViewModel: ObservableObject {
     @Published var selectedDay: Date? = nil
     @Published var viewMode: CalendarViewMode = .month
 
-    let periodStartDate: Date = Calendar.current.date(byAdding: .day, value: -3, to: Date())!
-    let periodLength: Int = 5
-    let cycleLength: Int = 29
+    private let cycle = CycleService.shared
+
+    var periodStartDate: Date {
+        cycle.currentCycleStartDate ?? Date()
+    }
+
+    var periodLength: Int { cycle.periodLength }
+    var cycleLength: Int { cycle.cycleLength }
 
     var predictedOvulationDate: Date {
-        Calendar.current.date(byAdding: .day, value: 14, to: periodStartDate)!
+        cycle.predictedOvulation(from: periodStartDate)
     }
 
     var fertileWindowStart: Date {
-        Calendar.current.date(byAdding: .day, value: -3, to: predictedOvulationDate)!
+        cycle.fertileWindow(from: periodStartDate).start
     }
 
     var fertileWindowEnd: Date {
-        Calendar.current.date(byAdding: .day, value: 2, to: predictedOvulationDate)!
+        cycle.fertileWindow(from: periodStartDate).end
     }
 
     func dayState(for date: Date) -> DayState {
         let cal = Calendar.current
+
+        guard cycle.hasData else { return cal.isDateInToday(date) ? .today : .normal }
 
         if cal.isDateInToday(date) && !isPeriodDay(date) {
             return .today
@@ -31,14 +38,19 @@ class CalendarViewModel: ObservableObject {
 
         let daysSincePeriodStart = cal.dateComponents([.day], from: periodStartDate, to: date).day ?? 0
 
+        // Current cycle period days
         if daysSincePeriodStart >= 0 && daysSincePeriodStart < periodLength {
-            if daysSincePeriodStart < 4 {
-                return .period(dayNumber: daysSincePeriodStart + 1)
-            } else {
-                return .predictedPeriod
-            }
+            return .period(dayNumber: daysSincePeriodStart + 1)
         }
 
+        // Predicted next cycle period
+        let nextCycleStart = cycle.nextCycleStart(from: periodStartDate)
+        let daysSinceNextStart = cal.dateComponents([.day], from: nextCycleStart, to: date).day ?? 0
+        if daysSinceNextStart >= 0 && daysSinceNextStart < periodLength {
+            return .predictedPeriod
+        }
+
+        // Fertile window and ovulation
         if date >= fertileWindowStart && date <= fertileWindowEnd {
             if cal.isDate(date, inSameDayAs: predictedOvulationDate) {
                 return .ovulation
@@ -55,18 +67,8 @@ class CalendarViewModel: ObservableObject {
     }
 
     func dayLog(for date: Date) -> DayLog? {
-        guard Calendar.current.isDateInToday(date) else { return nil }
-        return DayLog(
-            date: date,
-            symptoms: ["Fatigue", "Cramps"],
-            menstrualFlow: .medium,
-            sexActivity: [],
-            waterOz: 16,
-            weightLbs: 132.1,
-            steps: 157,
-            basalTemp: nil,
-            mood: nil
-        )
+        // No persistence layer yet — return nil for all days
+        return nil
     }
 
     func daysInMonth(for date: Date) -> [Date] {

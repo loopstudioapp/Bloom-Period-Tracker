@@ -3,8 +3,8 @@ import SwiftUI
 @MainActor
 class DailyLoggingViewModel: ObservableObject {
     @Published var selectedDate: Date = Date()
-    @Published var selectedFeelings: Set<String> = ["Fatigue"]
-    @Published var selectedFlow: MenstrualFlow? = .medium
+    @Published var selectedFeelings: Set<String> = []
+    @Published var selectedFlow: MenstrualFlow? = nil
     @Published var selectedSexActivities: Set<String> = []
     @Published var waterIntake: Int = 16
     @Published var waterGoal: Int = 72
@@ -13,7 +13,7 @@ class DailyLoggingViewModel: ObservableObject {
     @Published var pills: [String] = []
     @Published var searchText: String = ""
 
-    var cycleDay: Int { 4 }
+    var cycleDay: Int { CycleService.shared.currentCycleDay }
     var dateTitle: String { "Today" }
 
     func toggleFeeling(_ name: String) {
