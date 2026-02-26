@@ -48,6 +48,16 @@ struct RemindersView: View {
         .navigationTitle("Reminders")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
+        .alert("Notifications Disabled", isPresented: $viewModel.notificationsDenied) {
+            Button("Open Settings") {
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(url)
+                }
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("To receive reminders, please enable notifications for Bloom in your device settings.")
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {

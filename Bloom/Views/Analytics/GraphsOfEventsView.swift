@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct GraphsOfEventsView: View {
-    private let eventGroups = [
-        "Symptoms",
-        "Steps",
-        "Weight",
-        "Vaginal Discharge",
-        "Mood",
-        "Water"
+    private let eventGroups: [(name: String, icon: String, color: Color)] = [
+        ("Symptoms", "heart.text.square.fill", AppTheme.Colors.primaryPink),
+        ("Steps", "figure.walk", AppTheme.Colors.tealAccent),
+        ("Weight", "scalemass.fill", AppTheme.Colors.blueAccent),
+        ("Vaginal Discharge", "drop.halffull", AppTheme.Colors.dischargePurple),
+        ("Mood", "face.smiling.fill", AppTheme.Colors.orangeAccent),
+        ("Water", "drop.fill", AppTheme.Colors.waterIconColor)
     ]
 
     var body: some View {
@@ -22,17 +22,19 @@ struct GraphsOfEventsView: View {
 
             // Event list
             VStack(spacing: 0) {
-                ForEach(eventGroups, id: \.self) { group in
-                    if group == "Weight" {
+                ForEach(Array(eventGroups.enumerated()), id: \.offset) { _, group in
+                    if group.name == "Weight" {
                         NavigationLink(destination: WeightGraphView()) {
-                            eventRow(title: group)
+                            eventRow(title: group.name)
                         }
                         .buttonStyle(.plain)
                     } else {
-                        Button {
-                            // Placeholder action for other event groups
-                        } label: {
-                            eventRow(title: group)
+                        NavigationLink(destination: EventGraphPlaceholderView(
+                            eventName: group.name,
+                            icon: group.icon,
+                            iconColor: group.color
+                        )) {
+                            eventRow(title: group.name)
                         }
                         .buttonStyle(.plain)
                     }

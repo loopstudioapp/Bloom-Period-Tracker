@@ -2,18 +2,21 @@ import SwiftUI
 
 struct AppSettingsView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var metricSystem: Bool = false
+    @AppStorage("useMetricSystem") private var metricSystem: Bool = false
+    @State private var showHealthKitInfo: Bool = false
 
     var body: some View {
         List {
             // Settings rows section
             Section {
-                AnalysisMenuItem(
-                    icon: "paintpalette",
-                    iconColor: AppTheme.Colors.tealAccent,
-                    title: "App design settings",
-                    onTap: {}
-                )
+                NavigationLink(destination: AppDesignSettingsView()) {
+                    settingsRow(
+                        icon: "paintpalette",
+                        iconColor: AppTheme.Colors.tealAccent,
+                        title: "App design settings"
+                    )
+                }
+                .buttonStyle(.plain)
                 .listRowInsets(EdgeInsets(
                     top: 0,
                     leading: AppTheme.Spacing.md,
@@ -22,12 +25,16 @@ struct AppSettingsView: View {
                 ))
                 .listRowSeparator(.hidden)
 
-                AnalysisMenuItem(
-                    icon: "heart",
-                    iconColor: AppTheme.Colors.tealAccent,
-                    title: "The Health app",
-                    onTap: {}
-                )
+                Button {
+                    showHealthKitInfo = true
+                } label: {
+                    settingsRow(
+                        icon: "heart",
+                        iconColor: AppTheme.Colors.tealAccent,
+                        title: "The Health app"
+                    )
+                }
+                .buttonStyle(.plain)
                 .listRowInsets(EdgeInsets(
                     top: 0,
                     leading: AppTheme.Spacing.md,
@@ -36,12 +43,18 @@ struct AppSettingsView: View {
                 ))
                 .listRowSeparator(.hidden)
 
-                AnalysisMenuItem(
-                    icon: "globe",
-                    iconColor: AppTheme.Colors.tealAccent,
-                    title: "Change language",
-                    onTap: {}
-                )
+                Button {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(url)
+                    }
+                } label: {
+                    settingsRow(
+                        icon: "globe",
+                        iconColor: AppTheme.Colors.tealAccent,
+                        title: "Change language"
+                    )
+                }
+                .buttonStyle(.plain)
                 .listRowInsets(EdgeInsets(
                     top: 0,
                     leading: AppTheme.Spacing.md,
@@ -90,6 +103,42 @@ struct AppSettingsView: View {
                 }
                 .accessibilityLabel("Back")
             }
+        }
+        .alert("Apple Health Integration", isPresented: $showHealthKitInfo) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("HealthKit integration is coming soon. This will allow Bloom to sync your cycle data with Apple Health for a more complete health picture.")
+        }
+    }
+
+    @ViewBuilder
+    private func settingsRow(icon: String, iconColor: Color, title: String) -> some View {
+        VStack(spacing: 0) {
+            HStack(spacing: AppTheme.Spacing.md) {
+                ZStack {
+                    Circle()
+                        .fill(iconColor.opacity(0.15))
+                        .frame(width: 40, height: 40)
+
+                    Image(systemName: icon)
+                        .font(.system(size: 18))
+                        .foregroundColor(iconColor)
+                }
+
+                Text(title)
+                    .font(AppTheme.Fonts.body)
+                    .foregroundColor(AppTheme.Colors.textPrimary)
+
+                Spacer()
+
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundColor(AppTheme.Colors.textTertiary)
+            }
+            .padding(.vertical, AppTheme.Spacing.md)
+
+            Divider()
+                .background(AppTheme.Colors.divider)
         }
     }
 }

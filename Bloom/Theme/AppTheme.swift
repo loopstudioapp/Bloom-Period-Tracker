@@ -46,6 +46,9 @@ struct AppTheme {
         static let follicularPhase = Color(hex: "#C4C4C4")
         static let fertilePhase = Color(hex: "#3AAFA9")
         static let lutealPhase = Color(hex: "#666666")
+        static let fertileGreen = Color(hex: "#4CAF50")
+        static let ovulationPurple = Color(hex: "#7B61FF")
+        static let lutealYellow = Color(hex: "#F5A657")
 
         // Avatar colors
         static let avatarPink = Color(hex: "#EE94A6")

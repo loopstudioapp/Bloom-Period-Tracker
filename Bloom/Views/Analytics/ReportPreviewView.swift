@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ReportPreviewView: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var showShareSheet = false
 
     private let cycle = CycleService.shared
 
@@ -55,7 +56,7 @@ struct ReportPreviewView: View {
 
             // Send or print button
             Button {
-                // Send or print action
+                showShareSheet = true
             } label: {
                 Text("Send or print")
                     .font(AppTheme.Fonts.bodyBold)
@@ -65,6 +66,10 @@ struct ReportPreviewView: View {
             .padding(.vertical, AppTheme.Spacing.md)
         }
         .background(AppTheme.Colors.backgroundLight)
+        .sheet(isPresented: $showShareSheet) {
+            let text = buildReportText()
+            ShareSheet(activityItems: [text])
+        }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -272,6 +277,52 @@ struct ReportPreviewView: View {
         .cornerRadius(AppTheme.CornerRadius.medium)
         .cardShadow()
     }
+
+    // MARK: - Report Text for Sharing
+
+    private func buildReportText() -> String {
+        var lines: [String] = []
+        lines.append("BLOOM HEALTH REPORT")
+        lines.append("Made by Bloom Period Tracker")
+        lines.append("")
+        lines.append("COVERAGE: \(coverageStart) – \(coverageEnd)")
+        lines.append("EXPORTED: \(exportedDate)")
+        lines.append("")
+        lines.append("This report contains a summary of your cycle data tracked in Bloom.")
+        lines.append("")
+        lines.append("CYCLE AND PERIOD LENGTH")
+        lines.append("Average cycle length: \(cycle.cycleLength) days")
+        lines.append("Average period length: \(cycle.periodLength) days")
+        lines.append("")
+
+        if let currentStart = cycle.currentCycleStartDate {
+            let endDate = cycle.nextCycleStart(from: currentStart)
+            lines.append("Current cycle: \(formatShort(currentStart)) – \(formatShort(endDate)) (\(cycle.cycleLength) days, period: \(cycle.periodLength) days)")
+        }
+
+        for prev in cycle.previousCycles {
+            let endStr = formatFull(prev.endDate ?? prev.startDate)
+            let total = prev.cycleLength ?? cycle.cycleLength
+            lines.append("Previous cycle: \(formatFull(prev.startDate)) – \(endStr) (\(total) days, period: \(prev.periodLength) days)")
+        }
+
+        lines.append("")
+        lines.append("This overview is based on tracked data and may not represent every cycle variation. Always consult your healthcare provider for personalized medical advice.")
+
+        return lines.joined(separator: "\n")
+    }
+}
+
+// MARK: - Share Sheet
+
+struct ShareSheet: UIViewControllerRepresentable {
+    let activityItems: [Any]
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
 #Preview {

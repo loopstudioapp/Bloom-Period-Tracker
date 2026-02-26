@@ -23,7 +23,7 @@ struct DischargeDiagramScreen: View {
             .padding(.horizontal, AppTheme.Spacing.lg)
             .padding(.bottom, AppTheme.Spacing.xl)
         }
-        .background(AppTheme.Colors.backgroundPink)
+        .background(AppTheme.Colors.backgroundPink.ignoresSafeArea())
     }
 
     // MARK: - Text Section

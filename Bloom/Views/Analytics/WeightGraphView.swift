@@ -75,29 +75,62 @@ struct WeightGraphView: View {
                 }
                 .padding(.horizontal, AppTheme.Spacing.xl)
 
-                // Changes during the cycle
-                HStack {
-                    Text("Changes during the cycle")
-                        .font(AppTheme.Fonts.subheadline)
-                        .foregroundColor(AppTheme.Colors.textSecondary)
+                if weightChartPoints.isEmpty {
+                    // Empty state
+                    VStack(spacing: AppTheme.Spacing.lg) {
+                        Spacer()
+                            .frame(height: AppTheme.Spacing.xl)
 
-                    Spacer()
+                        ZStack {
+                            Circle()
+                                .fill(AppTheme.Colors.weightIconColor.opacity(0.1))
+                                .frame(width: 80, height: 80)
 
-                    Text("0 lbs.")
-                        .font(AppTheme.Fonts.bodyBold)
-                        .foregroundColor(AppTheme.Colors.textPrimary)
+                            Image(systemName: "scalemass.fill")
+                                .font(.system(size: 32))
+                                .foregroundColor(AppTheme.Colors.weightIconColor)
+                        }
+
+                        VStack(spacing: AppTheme.Spacing.sm) {
+                            Text("No weight data yet")
+                                .font(AppTheme.Fonts.bodyBold)
+                                .foregroundColor(AppTheme.Colors.textPrimary)
+
+                            Text("Log your weight daily to track changes across your cycle and see patterns here.")
+                                .font(AppTheme.Fonts.subheadline)
+                                .foregroundColor(AppTheme.Colors.textSecondary)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, AppTheme.Spacing.xl)
+                        }
+
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
+                } else {
+                    // Changes during the cycle
+                    HStack {
+                        Text("Changes during the cycle")
+                            .font(AppTheme.Fonts.subheadline)
+                            .foregroundColor(AppTheme.Colors.textSecondary)
+
+                        Spacer()
+
+                        Text("0 lbs.")
+                            .font(AppTheme.Fonts.bodyBold)
+                            .foregroundColor(AppTheme.Colors.textPrimary)
+                    }
+                    .padding(.horizontal, AppTheme.Spacing.md)
+
+                    // Weight chart
+                    WeightChart(
+                        dataPoints: weightChartPoints,
+                        periodStart: periodStart,
+                        fertileStart: fertileWindow.start,
+                        fertileEnd: fertileWindow.end,
+                        ovulationDate: ovulationDate
+                    )
+                    .padding(.horizontal, AppTheme.Spacing.sm)
                 }
-                .padding(.horizontal, AppTheme.Spacing.md)
-
-                // Weight chart
-                WeightChart(
-                    dataPoints: weightChartPoints,
-                    periodStart: periodStart,
-                    fertileStart: fertileWindow.start,
-                    fertileEnd: fertileWindow.end,
-                    ovulationDate: ovulationDate
-                )
-                .padding(.horizontal, AppTheme.Spacing.sm)
 
                 Spacer()
             }

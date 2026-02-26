@@ -14,6 +14,7 @@
 		0B56BA12F5BDB6023924F279 /* PeriodDateCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552EEFAB40279B6FC0F3F0E1 /* PeriodDateCalendar.swift */; };
 		0FE082A389235C75B6D1C1C0 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EACB4249A2BFF600A5A850A /* SettingsViewModel.swift */; };
 		109CAF65A1E08FE62FAE77B7 /* AnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F86B9CC6266E8003504C518 /* AnalyticsViewModel.swift */; };
+		10D560BDF384CE72FEA436F3 /* PatternsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48426EE63E3C176FEA74927 /* PatternsView.swift */; };
 		111FFD7C5602E46205C7830B /* BloomLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE890E802CBE8DDED68D7C /* BloomLogo.swift */; };
 		117C58853CFC2F10CA8430F8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7DB779EEDD134DE9E6794E /* SettingsView.swift */; };
 		13434FCBD5BD3CA888F315A8 /* BirthControlEducationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4AF765CB09EF85E0ED24EC /* BirthControlEducationScreen.swift */; };
@@ -75,6 +76,7 @@
 		4DA07B153A069A20BE171F04 /* SymptomPatternCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0911CC4DFA0591B26AE373 /* SymptomPatternCard.swift */; };
 		4E59CF010542F505D878152A /* OnboardingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D833D4A88694685C70D095 /* OnboardingModels.swift */; };
 		4EC0B2FB912ED3DF108D9DBD /* AppSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E951DCBC57F3B78422C4B7 /* AppSettingsView.swift */; };
+		ACCC3DAFD326D42558F94ADC /* EventGraphPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED41B293E457B3749CC6C30A /* EventGraphPlaceholderView.swift */; };
 		4FBD5CBD6D01E788881227D8 /* SecretChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5996F524F8A502B47F42A4C6 /* SecretChatsView.swift */; };
 		517E46E11C77EF89C51F3465 /* FriendAvatarRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA545776953D02A5D08F7B9 /* FriendAvatarRow.swift */; };
 		553A1514FCABC885F704B77B /* TypingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAC7FC7A9270CF78096684 /* TypingIndicator.swift */; };
@@ -153,6 +155,7 @@
 		BF1671A7BA86EF8FD65368A4 /* OpenRouterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2725FB9535CA9B3A2E2292DC /* OpenRouterService.swift */; };
 		C17FC199904D1E95DDD5BB37 /* PartnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58F6E875EC9DF11252F91E7 /* PartnerView.swift */; };
 		C5977AE004DECF17D2C4B702 /* GraphsOfEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F745E312F453E5CB236AF8EB /* GraphsOfEventsView.swift */; };
+		F61564E2E9303417250F0E9B /* AppDesignSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC7BA04345737FF84C891F /* AppDesignSettingsView.swift */; };
 		C5AF5E1133860AF8A7317758 /* ThankYouHonestyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6DA6665185FF9B5F2167DE /* ThankYouHonestyScreen.swift */; };
 		C79368CB5C57E2828443D0CF /* BearAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BFB97FF3AB86A33B9AC226 /* BearAvatarView.swift */; };
 		CA7956CD854565C90DC06EA4 /* PersonalizingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8ECE5A3E8A1B5457F35DC2 /* PersonalizingScreen.swift */; };
@@ -344,6 +347,8 @@
 		C3D4E5F6A7B8C9D0E1F2A3B4 /* InsightArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightArticle.swift; sourceTree = "<group>"; };
 		E7F8A9B0C1D2E3F4A5B6C7D8 /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
 		C22C0BD794827528AD8B55D6 /* CycleLengthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleLengthView.swift; sourceTree = "<group>"; };
+		C3BC7BA04345737FF84C891F /* AppDesignSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDesignSettingsView.swift; sourceTree = "<group>"; };
+		D48426EE63E3C176FEA74927 /* PatternsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternsView.swift; sourceTree = "<group>"; };
 		C29E932FC9E4695C467459A5 /* ValueComparisonScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueComparisonScreen.swift; sourceTree = "<group>"; };
 		C2D833D4A88694685C70D095 /* OnboardingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModels.swift; sourceTree = "<group>"; };
 		C54D87364230534E18E627D6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -387,6 +392,7 @@
 		F5455372D14F6FADD0F70020 /* ReviewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsScreen.swift; sourceTree = "<group>"; };
 		F6AD46B41F6A3AAD2469DF5A /* DailyLoggingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyLoggingViewModel.swift; sourceTree = "<group>"; };
 		F745E312F453E5CB236AF8EB /* GraphsOfEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphsOfEventsView.swift; sourceTree = "<group>"; };
+		ED41B293E457B3749CC6C30A /* EventGraphPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGraphPlaceholderView.swift; sourceTree = "<group>"; };
 		F7F619EBC58B7CBAB1D88987 /* NumberOneHeroIllustration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOneHeroIllustration.swift; sourceTree = "<group>"; };
 		FB573060B9EDCEB97EC4CFC6 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		FCB5CE3D4533B89E2FA9BBF8 /* ArticleCardsCollage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCardsCollage.swift; sourceTree = "<group>"; };
@@ -554,6 +560,7 @@
 			isa = PBXGroup;
 			children = (
 				A8E951DCBC57F3B78422C4B7 /* AppSettingsView.swift */,
+				C3BC7BA04345737FF84C891F /* AppDesignSettingsView.swift */,
 				66E8865270B5ACCB7B8FAF61 /* RemindersView.swift */,
 				2D7DB779EEDD134DE9E6794E /* SettingsView.swift */,
 			);
@@ -668,6 +675,8 @@
 				2B4BF343D278E76064903FB6 /* AnalysisMenuView.swift */,
 				C22C0BD794827528AD8B55D6 /* CycleLengthView.swift */,
 				F745E312F453E5CB236AF8EB /* GraphsOfEventsView.swift */,
+				ED41B293E457B3749CC6C30A /* EventGraphPlaceholderView.swift */,
+				D48426EE63E3C176FEA74927 /* PatternsView.swift */,
 				A2CF8E60B3FFE6290B6477A8 /* PeriodLengthView.swift */,
 				F47BCAC1992A10C98C843429 /* ReportPreviewView.swift */,
 				136F683E7933BD5A19A122E1 /* WeightGraphView.swift */,
@@ -830,6 +839,7 @@
 				E47C2FA3A10768268F59DC04 /* AnalysisMenuView.swift in Sources */,
 				109CAF65A1E08FE62FAE77B7 /* AnalyticsViewModel.swift in Sources */,
 				4EC0B2FB912ED3DF108D9DBD /* AppSettingsView.swift in Sources */,
+				F61564E2E9303417250F0E9B /* AppDesignSettingsView.swift in Sources */,
 				CE2F7B2C3F951A6CD0F6B444 /* AppTheme.swift in Sources */,
 				CAB368E352506EC2C9C08B28 /* ArticleCardsCollage.swift in Sources */,
 				D5E6F7A8B9C0D1E2F3A4B5C6 /* ArticleDetailView.swift in Sources */,
@@ -901,6 +911,7 @@
 				3E185BED34EA8D891407AAFD /* GoalPillSelector.swift in Sources */,
 				44898A3430763E3200543D85 /* GradientBackground.swift in Sources */,
 				C5977AE004DECF17D2C4B702 /* GraphsOfEventsView.swift in Sources */,
+				ACCC3DAFD326D42558F94ADC /* EventGraphPlaceholderView.swift in Sources */,
 				4BF05B58E47077F0D9067238 /* GreetingScreen.swift in Sources */,
 				D338B81DC4376600DF68AC0B /* HealthAssistantCard.swift in Sources */,
 				D7D58E2D79775E31CDBE0D63 /* HealthAssistantChatView.swift in Sources */,
@@ -946,6 +957,7 @@
 				BA8605EA3AB8DCC7EBECD0A2 /* PartnerViewModel.swift in Sources */,
 				9727E0D66DA25E1B69620149 /* PaywallScreen.swift in Sources */,
 				2593C17152370BB547D993E6 /* PeriodCircleView.swift in Sources */,
+				10D560BDF384CE72FEA436F3 /* PatternsView.swift in Sources */,
 				0B56BA12F5BDB6023924F279 /* PeriodDateCalendar.swift in Sources */,
 				6203388DD1ECABAF6A24F9C6 /* PeriodDateSelectionPreviousScreen.swift in Sources */,
 				1CC9320BB6AAC3ED9BA2004C /* PeriodDateSelectionScreen.swift in Sources */,

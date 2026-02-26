@@ -29,7 +29,7 @@ struct AnalysisMenuView: View {
                 }
                 .buttonStyle(.plain)
 
-                NavigationLink(destination: Text("Patterns of your body").navigationTitle("Patterns")) {
+                NavigationLink(destination: PatternsView()) {
                     AnalysisMenuItem(
                         icon: "circle.dotted",
                         iconColor: AppTheme.Colors.graphIconPatterns,
